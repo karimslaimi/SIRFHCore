@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model IEnumerable<IdentityUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1></h1>
+
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-heading kt-heading--md">
+        <center> <h1><font color="#273746">La liste des utilisateurs </font></h1> </center>
+    </div>
+    <div class="kt-portlet">
+        <div class="kt-portlet__body kt-portlet__body--fit">
+            <div class="kt-grid  kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2" data-ktwizard-state="step-first">
+                <div class="kt-grid__item kt-wizard-v2__aside">
+                    <div>
+                        <div><div><p><label>    </label></p></div></div>
+                    </div>
+
+                    <form class="form-inline">
+                        <div>
+                            <div><div><p><label>    </label></p></div></div>
+                        </div>
+                      
+                    </form>
+
+                    <div>
+                        <div><div><p></p></div></div>
+                    </div>
+                    <div>
+                        <div><div><p><label>    </label></p></div></div>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col"><h5><center> Liste des employés</center> </h5></th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                
+                                <td sstyle="padding-left:50px">
+                                    <i class="fas fa-user-tie " style="font-size:20px;">  </i>  @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+
+
+                                <td>
+                                    <div class="btn-group dropleft">
+                                        <i type="button" style="font-size:20px;color:#48C9B0;" class="fa fa-paperclip" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                        </i>
+                                        <div class="dropdown-menu">
+
+                                            <a class="dropdown-item" onclick="location.href='@Url.Action("Lesdemandes", "Manager", new { id=item.UserName })'">Les demandes des congés</a>
+                                            <a class="dropdown-item" onclick="location.href='@Url.Action("Lesfrais", "Manager", new { id=item.UserName })'">Les demandes des Notes de frais</a>
+
+                                            <a class="dropdown-item" onclick="location.href='@Url.Action("consltSolde", "Manager", new { id=item.UserName })'">Consulter le solde des congés</a>
+                                        </div>
+                                        
+                                    </div>
+
+                                   
+
+
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

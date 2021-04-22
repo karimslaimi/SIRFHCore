@@ -1,0 +1,581 @@
+﻿<!-- begin:: Header -->
+    <div id="kt_header" class="kt-header kt-grid__item kt-header--fixed" style="background-color:#282a3c">
+       
+            <!-- begin: Header Menu -->
+                   <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+            <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+                <div class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-tab " id="kt_header_menu">
+                    <ul class="kt-menu__nav ">
+                        <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a class="kt-menu__link "  onclick="location.href='@Url.Action("Index", "Home", new { area = "" })'"><span class="kt-menu__link-text">Accueil</span></a></li>
+                        <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a class="kt-menu__link " href="https://sinorfi.com/"><span class="kt-menu__link-text">Société</span></a></li>
+
+                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" aria-haspopup="true" data-ktmenu-submenu-toggle="click"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><span class="kt-menu__link-text">Clients</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left"><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Forms &amp; Controls</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Controls</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/base.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Base Inputs</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/input-group.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Input Groups</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/checkbox.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Checkbox</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/radio.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Radio</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/switch.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Switch</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/option.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mega Options</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Widgets</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-datepicker.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Datepicker</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-datetimepicker.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Datetimepicker</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-timepicker.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Timepicker</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-daterangepicker.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Daterangepicker</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/tagify.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Tagify</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-touchspin.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Touchspin</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-maxlength.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Maxlength</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-switch.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Switch</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-multipleselectsplitter.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Multiple Select Splitter</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-select.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Bootstrap Select</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/select2.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Select2</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/typeahead.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Typeahead</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Widgets 2</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/nouislider.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">noUiSlider</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/form-repeater.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Repeater</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/ion-range-slider.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Ion Range Slider</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/input-mask.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Input Masks</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/autosize.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Autosize</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/clipboard.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Clipboard</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/recaptcha.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Google reCaptcha</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Text Editors</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/editors/tinymce.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">TinyMCE</span></a></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">CKEditor</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/editors/ckeditor-classic.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">CKEditor Classic</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/editors/ckeditor-inline.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">CKEditor Inline</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/editors/ckeditor-balloon.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">CKEditor Balloon</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/editors/ckeditor-balloon-block.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">CKEditor Balloon Block</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/editors/ckeditor-document.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">CKEditor Document</span></a></li></ul></div></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/editors/quill.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Quill Text Editor</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/editors/summernote.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Summernote WYSIWYG</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/editors/bootstrap-markdown.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Markdown Editor</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Layouts</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/layouts/default-forms.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Default Forms</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/layouts/multi-column-forms.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Multi Column Forms</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/layouts/action-bars.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Basic Action Bars</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/layouts/sticky-action-bar.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Sticky Action Bar</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Validation</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/validation/states.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Validation States</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/validation/form-controls.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Controls</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/validation/form-widgets.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Widgets</span></a></li></ul></div></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon flaticon2-browser-2"></i><span class="kt-menu__link-text">KTDatatable</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Base</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/data-local.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Local Data</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/data-json.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">JSON Data</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/data-ajax.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Ajax Data</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/html-table.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">HTML Table</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/local-sort.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Local Sort</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/translation.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Translation</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Advanced</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/record-selection.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Record Selection</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/row-details.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Row Details</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/modal.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Modal Examples</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/column-rendering.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Column Rendering</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/column-width.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Column Width</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/vertical.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Vertical Scrolling</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/horizontal.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Horizontal Scrolling</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Child Datatables</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/child/data-local.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Local Data</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/child/data-ajax.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Remote Data</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">API</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/api/methods.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">API Methods</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/api/events.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Events</span></a></li></ul></div></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon flaticon2-list-3"></i><span class="kt-menu__link-text">Datatables.net</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Basic</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/basic/basic.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Basic Tables</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/basic/scrollable.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Scrollable Tables</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/basic/headers.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Complex Headers</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/basic/paginations.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Pagination Options</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Advanced</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/column-rendering.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Column Rendering</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/multiple-controls.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Multiple Controls</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/column-visibility.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Column Visibility</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/row-callback.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Row Callback</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/row-grouping.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Row Grouping</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/footer-callback.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Footer Callback</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Data sources</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/data-sources/html.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">HTML</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/data-sources/javascript.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Javascript</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/data-sources/ajax-client-side.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Ajax Client-side</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/data-sources/ajax-server-side.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Ajax Server-side</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Search Options</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/search-options/column-search.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Column Search</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/search-options/advanced-search.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Advanced Search</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Extensions</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/extensions/buttons.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Buttons</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/extensions/colreorder.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">ColReorder</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/extensions/keytable.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">KeyTable</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/extensions/responsive.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Responsive</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/extensions/rowgroup.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">RowGroup</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/extensions/rowreorder.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">RowReorder</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/extensions/scroller.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Scroller</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/extensions/select.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Select</span></a></li></ul></div></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon flaticon2-list-3"></i><span class="kt-menu__link-text">File Upload</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/file-upload/metronic-avatar.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Metronic Avatar</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/file-upload/dropzonejs.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">DropzoneJS</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/file-upload/uppy.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Uppy</span></a></li></ul></div></li></ul></div></li>
+                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" aria-haspopup="true" data-ktmenu-submenu-toggle="click">
+                            <a class="kt-menu__link kt-menu__toggle" href="javascript:;"><span class="kt-menu__link-text">Solutions</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                <ul class="kt-menu__subnav">
+                                    <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                        <a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Congés</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right">
+                                            <ul class="kt-menu__subnav">
+                                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Gestion des demandes </span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/base.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Base Inputs</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/input-group.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Input Groups</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/checkbox.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Checkbox</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/radio.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Radio</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/switch.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Switch</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/controls/option.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Mega Options</span></a></li></ul></div></li>
+                                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                                    <a class="kt-menu__link kt-menu__toggle" href="javascript:;">
+                                                        <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Historique</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                                    </a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-datepicker.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Datepicker</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-datetimepicker.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Datetimepicker</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-timepicker.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Timepicker</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-daterangepicker.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Daterangepicker</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/tagify.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Tagify</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-touchspin.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Touchspin</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-maxlength.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Maxlength</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-switch.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Switch</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-multipleselectsplitter.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Multiple Select Splitter</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/bootstrap-select.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Bootstrap Select</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/select2.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Select2</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/typeahead.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Typeahead</span></a></li></ul></div>
+                                                </li>
+                                                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Solde de congés</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/nouislider.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">noUiSlider</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/form-repeater.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Form Repeater</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/ion-range-slider.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Ion Range Slider</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/input-mask.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Input Masks</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/autosize.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Autosize</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/clipboard.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Clipboard</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/forms/widgets/recaptcha.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Google reCaptcha</span></a></li></ul></div></li>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon flaticon2-browser-2"></i><span class="kt-menu__link-text">Notes de Frais</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Gestion des demandes</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/data-local.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Local Data</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/data-json.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">JSON Data</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/data-ajax.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Ajax Data</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/html-table.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">HTML Table</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/local-sort.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Local Sort</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/base/translation.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Translation</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Historique</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/record-selection.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Record Selection</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/row-details.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Row Details</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/modal.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Modal Examples</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/column-rendering.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Column Rendering</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/column-width.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Column Width</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/vertical.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Vertical Scrolling</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/metronic-datatable/advanced/horizontal.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Horizontal Scrolling</span></a></li></ul></div></li> </li>
+                    </ul>
+                        
+                    <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon flaticon2-list-3"></i><span class="kt-menu__link-text">Portail RH</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Validation des demandes</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/basic/basic.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Basic Tables</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/basic/scrollable.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Scrollable Tables</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/basic/headers.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Complex Headers</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/basic/paginations.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Pagination Options</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Historique</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/column-rendering.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Column Rendering</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/multiple-controls.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Multiple Controls</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/column-visibility.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Column Visibility</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/row-callback.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Row Callback</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/row-grouping.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Row Grouping</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/advanced/footer-callback.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Footer Callback</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Suivi de solde de congés</span><i class="kt-menu__hor-arrow la la-angle-right"></i><i class="kt-menu__ver-arrow la la-angle-right"></i></a><div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right"><ul class="kt-menu__subnav"><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/data-sources/html.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">HTML</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/data-sources/javascript.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Javascript</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/data-sources/ajax-client-side.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Ajax Client-side</span></a></li><li class="kt-menu__item " aria-haspopup="true"><a class="kt-menu__link " href="/metronic/preview/demo3/crud/datatables/data-sources/ajax-server-side.html"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Ajax Server-side</span></a></li></ul></div></li><li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a class="kt-menu__link kt-menu__toggle" href="javascript:;"></a></li></ul></div></li></li></ul></div></li>
+
+
+                      
+
+                    </ul>
+            
+                </div>
+            </div>
+            <!-- end: Header Menu -->		<!-- begin:: Header Topbar -->
+            <div class="kt-header__topbar">
+                <!--begin: Search -->
+                <div class="kt-header__topbar-item kt-header__topbar-item--search dropdown" id="kt_quick_search_toggle">
+                    <div class="kt-header__topbar-wrapper" data-offset="10px,0px" data-toggle="dropdown">
+                        <span class="kt-header__topbar-icon"><i class="flaticon2-search-1"></i></span>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-top-unround dropdown-menu-anim dropdown-menu-lg">
+                        <div class="kt-quick-search kt-quick-search--dropdown kt-quick-search--result-compact" id="kt_quick_search_dropdown">
+                            <form class="kt-quick-search__form" method="get">
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="flaticon2-search-1"></i></span></div>
+                                    <input class="form-control kt-quick-search__input" type="text" placeholder="Search...">
+                                    <div class="input-group-append"><span class="input-group-text"><i class="la la-close kt-quick-search__close"></i></span></div>
+                                </div>
+                            </form>
+                            <div class="kt-quick-search__wrapper kt-scroll ps" style="height: 325px; overflow: hidden;" data-mobile-height="200" data-height="325" data-scroll="true">
+
+                                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div tabindex="0" class="ps__thumb-x" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div tabindex="0" class="ps__thumb-y" style="top: 0px; height: 0px;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Search -->
+                <!--begin: Notifications -->
+                <div class="kt-header__topbar-item dropdown">
+                    <div class="kt-header__topbar-wrapper" aria-expanded="true" data-offset="10px,0px" data-toggle="dropdown">
+                        <span class="kt-header__topbar-icon"><i class="flaticon2-bell-alarm-symbol"></i></span>
+                        <span class="kt-hidden kt-badge kt-badge--dot kt-badge--notify kt-badge--sm"></span>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-lg">
+                        <form>
+                            <!--begin: Head -->
+                            <div class="kt-head kt-head--skin-light kt-head--fit-x kt-head--fit-b">
+                                <h3 class="kt-head__title">
+                                    User Notifications
+                                    &nbsp;
+                                    <span class="btn btn-label-primary btn-sm btn-bold btn-font-md">23 new</span>
+                                </h3>
+                                <ul class="nav nav-tabs nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand  kt-notification-item-padding-x" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active show" role="tab" aria-selected="true" href="#topbar_notifications_notifications" data-toggle="tab">Alerts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" role="tab" aria-selected="false" href="#topbar_notifications_events" data-toggle="tab">Events</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" role="tab" aria-selected="false" href="#topbar_notifications_logs" data-toggle="tab">Logs</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--end: Head -->
+
+                            <div class="tab-content">
+                                <div class="tab-pane active show" id="topbar_notifications_notifications" role="tabpanel">
+                                    <div class="kt-notification kt-margin-t-10 kt-margin-b-10 kt-scroll ps" style="height: 300px; overflow: hidden;" data-mobile-height="200" data-height="300" data-scroll="true">
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-line-chart kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New order has been received
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    2 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-box-1 kt-font-brand"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New customer is registered
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    3 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-chart2 kt-font-danger"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Application has been approved
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    3 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-image-file kt-font-warning"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New file has been uploaded
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    5 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-drop kt-font-info"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New user feedback received
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    8 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-pie-chart-2 kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    System reboot has been successfully completed
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    12 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-favourite kt-font-danger"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New order has been placed
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    15 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item kt-notification__item--read" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-safe kt-font-primary"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Company meeting canceled
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    19 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-psd kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New report has been received
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    23 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon-download-1 kt-font-danger"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Finance report has been generated
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    25 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon-security kt-font-warning"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New customer comment recieved
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    2 days ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-pie-chart kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New customer is registered
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    3 days ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div tabindex="0" class="ps__thumb-x" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div tabindex="0" class="ps__thumb-y" style="top: 0px; height: 0px;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="topbar_notifications_events" role="tabpanel">
+                                    <div class="kt-notification kt-margin-t-10 kt-margin-b-10 kt-scroll ps" style="height: 300px; overflow: hidden;" data-mobile-height="200" data-height="300" data-scroll="true">
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-psd kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New report has been received
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    23 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon-download-1 kt-font-danger"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Finance report has been generated
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    25 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-line-chart kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New order has been received
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    2 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-box-1 kt-font-brand"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New customer is registered
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    3 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-chart2 kt-font-danger"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Application has been approved
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    3 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-image-file kt-font-warning"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New file has been uploaded
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    5 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-drop kt-font-info"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New user feedback received
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    8 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-pie-chart-2 kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    System reboot has been successfully completed
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    12 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-favourite kt-font-brand"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New order has been placed
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    15 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item kt-notification__item--read" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-safe kt-font-primary"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Company meeting canceled
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    19 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-psd kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New report has been received
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    23 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon-download-1 kt-font-danger"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    Finance report has been generated
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    25 hrs ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon-security kt-font-warning"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New customer comment recieved
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    2 days ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a class="kt-notification__item" href="#">
+                                            <div class="kt-notification__item-icon">
+                                                <i class="flaticon2-pie-chart kt-font-success"></i>
+                                            </div>
+                                            <div class="kt-notification__item-details">
+                                                <div class="kt-notification__item-title">
+                                                    New customer is registered
+                                                </div>
+                                                <div class="kt-notification__item-time">
+                                                    3 days ago
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div tabindex="0" class="ps__thumb-x" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div tabindex="0" class="ps__thumb-y" style="top: 0px; height: 0px;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="topbar_notifications_logs" role="tabpanel">
+                                    <div class="kt-grid kt-grid--ver" style="min-height: 200px;">
+                                        <div class="kt-grid kt-grid--hor kt-grid__item kt-grid__item--fluid kt-grid__item--middle">
+                                            <div class="kt-grid__item kt-grid__item--middle kt-align-center">
+                                                All caught up!
+                                                <br>No new notifications.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--end: Notifications -->
+                <!--begin: Quick Actions -->
+                <div class="kt-header__topbar-item dropdown">
+                    <div class="kt-header__topbar-wrapper" aria-expanded="true" data-offset="10px,0px" data-toggle="dropdown">
+                        <span class="kt-header__topbar-icon"><i class="flaticon2-gear"></i></span>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
+                        <form>
+                            <!--begin: Head -->
+                            <div class="kt-head kt-head--skin-dark" style="background-image: url(/metronic/themes/metronic/theme/default/demo3/dist/assets/media/misc/bg-1.jpg)">
+                                <h3 class="kt-head__title">
+                                    User Quick Actions
+                                    <span class="kt-space-15"></span>
+                                    <span class="btn btn-success btn-sm btn-bold btn-font-md">23 tasks pending</span>
+                                </h3>
+                            </div>
+                            <!--end: Head -->
+                            <!--begin: Grid Nav -->
+                            <div class="kt-grid-nav kt-grid-nav--skin-light">
+                                <div class="kt-grid-nav__row">
+                                    <a class="kt-grid-nav__item" href="#">
+                                        <span class="kt-grid-nav__icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="kt-svg-icon kt-svg-icon--success kt-svg-icon--lg" viewBox="0 0 24 24" width="24px" height="24px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path opacity="0.3" fill="#000000" d="M 4.3618 10.2764 L 4.8618 9.27639 C 4.9465 9.107 5.11963 9 5.30902 9 L 15.191 9 C 15.4671 9 15.691 9.22386 15.691 9.5 C 15.691 9.57762 15.6729 9.65418 15.6382 9.72361 L 15.1382 10.7236 C 15.0535 10.893 14.8804 11 14.691 11 L 4.80902 11 C 4.53287 11 4.30902 10.7761 4.30902 10.5 C 4.30902 10.4224 4.32709 10.3458 4.3618 10.2764 Z M 14.6382 13.7236 L 14.1382 14.7236 C 14.0535 14.893 13.8804 15 13.691 15 L 4.80902 15 C 4.53287 15 4.30902 14.7761 4.30902 14.5 C 4.30902 14.4224 4.32709 14.3458 4.3618 14.2764 L 4.8618 13.2764 C 4.9465 13.107 5.11963 13 5.30902 13 L 14.191 13 C 14.4671 13 14.691 13.2239 14.691 13.5 C 14.691 13.5776 14.6729 13.6542 14.6382 13.7236 Z" />
+                                                    <path fill="#000000" d="M 17.369 7.618 C 16.977 7.086 16.466 6.6975 15.836 6.4525 C 15.206 6.2075 14.59 6.085 13.988 6.085 C 13.218 6.085 12.518 6.225 11.888 6.505 C 11.258 6.785 10.7155 7.17 10.2605 7.66 C 9.8055 8.15 9.4555 8.724 9.2105 9.382 C 8.9655 10.04 8.843 10.754 8.843 11.524 C 8.843 12.336 8.962 13.078 9.2 13.75 C 9.438 14.422 9.7775 14.9995 10.2185 15.4825 C 10.6595 15.9655 11.188 16.34 11.804 16.606 C 12.42 16.872 13.113 17.005 13.883 17.005 C 14.681 17.005 15.388 16.8475 16.004 16.5325 C 16.62 16.2175 17.117 15.801 17.495 15.283 L 19.616 16.774 C 18.958 17.6 18.153 18.2405 17.201 18.6955 C 16.249 19.1505 15.136 19.378 13.862 19.378 C 12.7 19.378 11.6325 19.1855 10.6595 18.8005 C 9.68649 18.4155 8.85 17.8765 8.15 17.1835 C 7.45 16.4905 6.904 15.6645 6.512 14.7055 C 6.12 13.7465 5.924 12.686 5.924 11.524 C 5.924 10.334 6.1305 9.2595 6.5435 8.3005 C 6.9565 7.3415 7.5235 6.526 8.2445 5.854 C 8.9655 5.182 9.816 4.664 10.796 4.3 C 11.776 3.936 12.84 3.754 13.988 3.754 C 14.464 3.754 14.961 3.7995 15.479 3.8905 C 15.997 3.9815 16.494 4.1215 16.97 4.3105 C 17.446 4.4995 17.894 4.734 18.314 5.014 C 18.734 5.294 19.091 5.63 19.385 6.022 L 17.369 7.618 Z" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <span class="kt-grid-nav__title">Accounting</span>
+                                        <span class="kt-grid-nav__desc">eCommerce</span>
+                                    </a>
+                                    <a class="kt-grid-nav__item" href="#">
+                                        <span class="kt-grid-nav__icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="kt-svg-icon kt-svg-icon--success kt-svg-icon--lg" viewBox="0 0 24 24" width="24px" height="24px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path opacity="0.3" fill="#000000" d="M 14.8572 13 C 14.9499 12.7223 15 12.4263 15 12.119 L 15 6.88095 C 15 5.28985 13.6569 4 12 4 L 11.7273 4 C 10.221 4 9 5.17259 9 6.61905 L 10.0909 6.61905 C 10.0909 5.75117 10.8235 5.04762 11.7273 5.04762 L 12 5.04762 C 13.0544 5.04762 13.9091 5.86843 13.9091 6.88095 L 13.9091 12.119 C 13.9091 12.4383 13.8241 12.7386 13.6746 13 L 10.3254 13 C 10.1759 12.7386 10.0909 12.4383 10.0909 12.119 L 10.0909 9.5 C 10.0909 9.06606 10.4572 8.71429 10.9091 8.71429 C 11.361 8.71429 11.7273 9.06606 11.7273 9.5 L 11.7273 11.3333 L 12.8182 11.3333 L 12.8182 9.5 C 12.8182 8.48748 11.9635 7.66667 10.9091 7.66667 C 9.85473 7.66667 9 8.48748 9 9.5 L 9 12.119 C 9 12.4263 9.05009 12.7223 9.14285 13 L 6 13 C 5.44772 13 5 12.5523 5 12 L 5 3 C 5 2.44772 5.44772 2 6 2 L 18 2 C 18.5523 2 19 2.44772 19 3 L 19 12 C 19 12.5523 18.5523 13 18 13 L 14.8572 13 Z" />
+                                                    <path fill="#000000" d="M 9 10.3333 L 9 12.119 C 9 13.7102 10.3431 15 12 15 C 13.6569 15 15 13.7102 15 12.119 L 15 10.3333 L 20.2073 6.57254 C 20.4311 6.41086 20.7437 6.46127 20.9053 6.68513 C 20.9669 6.77034 21 6.87277 21 6.97788 L 21 17 C 21 18.1046 20.1046 19 19 19 L 5 19 C 3.89543 19 3 18.1046 3 17 L 3 6.97788 C 3 6.70174 3.22386 6.47788 3.5 6.47788 C 3.60511 6.47788 3.70754 6.511 3.79275 6.57254 L 9 10.3333 Z M 10.0909 11.1212 L 12 12.5 L 13.9091 11.1212 L 13.9091 12.119 C 13.9091 13.1316 13.0544 13.9524 12 13.9524 C 10.9456 13.9524 10.0909 13.1316 10.0909 12.119 L 10.0909 11.1212 Z" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <span class="kt-grid-nav__title">Administration</span>
+                                        <span class="kt-grid-nav__desc">Console</span>
+                                    </a>
+                                </div>
+                                <div class="kt-grid-nav__row">
+                                    <a class="kt-grid-nav__item" href="#">
+                                        <span class="kt-grid-nav__icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="kt-svg-icon kt-svg-icon--success kt-svg-icon--lg" viewBox="0 0 24 24" width="24px" height="24px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <path fill="#000000" d="M 4 9.67472 L 10.8803 13.647 C 10.9543 13.6898 11.032 13.7207 11.1111 13.7403 L 11.1111 21.4444 L 4.4907 17.5265 C 4.18655 17.3465 4 17.0193 4 16.6659 L 4 9.67472 Z M 20 9.56912 L 20 16.6659 C 20 17.0193 19.8134 17.3465 19.5093 17.5265 L 12.8889 21.4444 L 12.8889 13.6728 C 12.905 13.6648 12.921 13.6562 12.9368 13.647 L 20 9.56912 Z" />
+                                                    <path opacity="0.3" fill="#000000" d="M 4.21612 7.74669 C 4.30016 7.64057 4.40623 7.55088 4.5299 7.48501 L 11.5299 3.75665 C 11.8238 3.60014 12.1762 3.60014 12.4701 3.75665 L 19.4701 7.48501 C 19.5654 7.53578 19.6503 7.60072 19.7227 7.67642 L 12.0479 12.1074 C 11.9975 12.1366 11.9509 12.1699 11.9085 12.2068 C 11.8661 12.1699 11.8196 12.1366 11.7692 12.1074 L 4.21612 7.74669 Z" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <span class="kt-grid-nav__title">Projects</span>
+                                        <span class="kt-grid-nav__desc">Pending Tasks</span>
+                                    </a>
+                                    <a class="kt-grid-nav__item" href="#">
+                                        <span class="kt-grid-nav__icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="kt-svg-icon kt-svg-icon--success kt-svg-icon--lg" viewBox="0 0 24 24" width="24px" height="24px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                                                    <polygon points="0,0 24,0 24,24 0,24" />
+                                                    <path opacity="0.3" fill="#000000" fill-rule="nonzero" d="M 18 14 C 16.3431 14 15 12.6569 15 11 C 15 9.34315 16.3431 8 18 8 C 19.6569 8 21 9.34315 21 11 C 21 12.6569 19.6569 14 18 14 Z M 9 11 C 6.79086 11 5 9.20914 5 7 C 5 4.79086 6.79086 3 9 3 C 11.2091 3 13 4.79086 13 7 C 13 9.20914 11.2091 11 9 11 Z" />
+                                                    <path fill="#000000" fill-rule="nonzero" d="M 17.6012 15.0006 C 21.0077 15.0379 23.7892 16.7601 23.9985 20.4 C 24.0069 20.5466 23.9985 21 23.4559 21 L 19.6 21 C 19.6 18.7491 18.8563 16.6718 17.6012 15.0006 Z M 0.000651684 20.1992 C 0.388259 15.4265 4.26191 13 8.98334 13 C 13.7712 13 17.7049 15.2932 17.9979 20.2 C 18.0096 20.3955 17.9979 21 17.2467 21 C 13.5411 21 8.03473 21 0.727502 21 C 0.476712 21 -0.0204618 20.4592 0.000651684 20.1992 Z" />
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <span class="kt-grid-nav__title">Customers</span>
+                                        <span class="kt-grid-nav__desc">Latest cases</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--end: Grid Nav -->
+                        </form>
+                    </div>
+                </div>
+                <!--end: Quick Actions -->
+                <!--begin: Cart -->
+                <!--end: Cart-->
+                <!--begin: Quick panel -->
+                <div title="" class="kt-header__topbar-item kt-header__topbar-item--quick-panel" data-original-title="Quick panel" data-toggle="kt-tooltip" data-placement="right">
+                    <span class="kt-header__topbar-icon" id="kt_quick_panel_toggler_btn">
+                        <i class="flaticon2-cube-1"></i>
+                    </span>
+                </div>
+                <!--end: Quick panel -->
+                <!--begin: Language bar -->
+                <div class="kt-header__topbar-item kt-header__topbar-item--langs">
+                    <div class="kt-header__topbar-wrapper" data-offset="10px,0px" data-toggle="dropdown">
+                        <span class="kt-header__topbar-icon">
+                            <img alt="" src="~/media/flags/195-france.svg">
+                        </span>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
+                        <ul class="kt-nav kt-margin-t-10 kt-margin-b-10">
+                            <li class="kt-nav__item kt-nav__item--active">
+                                <a class="kt-nav__link" href="#">
+                                    <span class="kt-nav__link-icon"><img alt="" src="~/media/flags/226-united-states.svg"></span>
+                                    <span class="kt-nav__link-text">Français</span>
+                                </a>
+                            </li>
+                            <li class="kt-nav__item">
+                                <a class="kt-nav__link" href="#">
+                                    <span class="kt-nav__link-icon"><img alt="" src="~/media/flags/260-united-kingdom.svg"></span>
+                                    <span class="kt-nav__link-text">Anglais</span>
+                                </a>
+                            </li>
+                          
+                        </ul>
+                    </div>
+                </div>
+                <!--end: Language bar -->
+                <!--begin: User Bar -->
+                <!--end: User Bar -->
+                <partial name="_LoginPartial" />
+            </div>
+            <!-- end:: Header Topbar -->
+        </div>
+
+

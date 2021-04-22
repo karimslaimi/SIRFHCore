@@ -1,0 +1,196 @@
+﻿@model SIRHCoreDomain.Projet
+
+@{
+    ViewData["Title"] = "EditProject";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card card-custom">
+    <div class="card-header">
+        <h3 class="card-title">
+            Modifier le projet @Model.nom
+        </h3>
+        <div class="card-toolbar">
+            <div class="example-tools justify-content-center">
+                <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
+                <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-theme-6" })
+        <div class="card-body">
+
+            <div class="form-group">
+                <label>Nom de projet</label>
+
+                @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nom, "", new { @class = "invalid-feedback" })
+
+            </div>
+            <div class="form-group ">
+                <label class="">Date début de projet</label>
+
+
+                @Html.EditorFor(model => model.datedeb, new { htmlAttributes = new { @class = "form-control", placeholder = " Date début de projet" } })
+
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button type="reset" class="btn btn-secondary">Cancel</button>
+        </div>
+    }
+
+</div>
+
+
+<div class="card card-custom">
+    <div class="card-header">
+        <h3 class="card-title">
+            Affecter des collaborateur au projet @Model.nom
+        </h3>
+        <div class="card-toolbar">
+            <div class="example-tools justify-content-center">
+                <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
+                <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+
+        <div class="row">
+            <label class="col-xl-3"></label>
+            <div class="col-lg-9 col-xl-6">
+               
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-xl-3 col-lg-3 col-form-label">Collaborateur</label>
+            <div class="col-lg-9 col-xl-6">
+             
+
+
+                    @using (Html.BeginForm("affectCollab", "Admin", "SIRH"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                <div class="form-group row">
+                    <div class="col-lg-4 col-md-9 col-sm-12">
+                        @Html.DropDownList("username", ViewBag.collabs, "Select ...", htmlAttributes: new { @class = "form-control selectpicker" })
+                    </div>
+
+                    <input value="@Model.id" name="id" hidden="hidden" />
+
+                    <div class="col-lg-5">
+                        <input type="submit" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" value="Affecter" />
+                    </div>
+
+                </div> 
+                       
+                    }
+                    <div class="message-success" style="color:darkred;">@ViewBag.ResultMessage</div>
+              
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="card-footer">
+
+    </div>
+
+    </div>
+
+
+
+<div class="card card-custom">
+    <div class="card-header">
+        <h3 class="card-title">
+            Liste des collaborateur au projet @Model.nom
+        </h3>
+        <div class="card-toolbar">
+            <div class="example-tools justify-content-center">
+                <span class="example-toggle" data-toggle="tooltip" title="View code"></span>
+                <span class="example-copy" data-toggle="tooltip" title="Copy code"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+
+
+        <div class="row">
+            <label class="col-xl-3"></label>
+            <div class="col-lg-9 col-xl-6">
+
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                      Nom
+                    </th>
+                    <th>
+                       Prenom
+                    </th>
+                    <th>
+                      Email
+                    </th>
+                    <th>
+                     Telephon
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.collaborateur)
+                {
+                    <tr>
+                        <td>
+                           @item.Nom
+                        </td>
+                        <td>
+                            @item.Prenom
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @item.PhoneNumber
+                        </td>
+                        <td>
+                            @Html.ActionLink("Retirer", "RemoveCollab", "Admin", new { projid=Model.id, userid = item.Id }, new { @class = "btn btn-outline-primary" })  
+                           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+
+    <div class="card-footer">
+
+    </div>
+
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

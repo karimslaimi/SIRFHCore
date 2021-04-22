@@ -1,0 +1,110 @@
+﻿@model SIRHCoreDomain.NoteDeFrais
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-heading kt-heading--md">
+        <center><h1><font color="#273746">Supprimer votre note de frais?! </font></h1></center>
+    </div>
+    <div class="kt-portlet">
+        <div class="kt-portlet__body kt-portlet__body--fit">
+            <div class="kt-grid  kt-wizard-v2 kt-wizard-v2--white" id="kt
+                     _wizard_v2" data-ktwizard-state="step-first">
+                <div class="kt-grid__item kt-wizard-v2__aside">
+                    <div class="kt-wizard-v2__nav">
+
+                        <!--doc: Remove "kt-wizard-v2__nav-items--clickable" class and also set 'clickableSteps: false' in the JS init to disable manually clicking step titles -->
+                        <div class="kt-wizard-v2__nav-items kt-wizard-v2__nav-items--clickable">
+                        </div>
+                    </div>
+                    <div>
+                        <h4></h4>
+                        <hr />
+
+                        <h5><center>Voulez vous vraiment supprimer cette note de frais?</center></h5>
+                        <div class="col-sm-9 " style="margin-left: 400px; margin-top: 50px;">
+                            <dl class="row ">
+
+                                <dt class="col-sm-2">
+
+                                    <label>ID</label>
+                                </dt>
+                                <dd class="col-sm-10">
+
+                                    @Html.DisplayFor(model => model.NoteDeFraisID)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    <label>Date de début</label>
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Date)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    <label>Date de fin</label>
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Type)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    <label>Type</label>
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Montant)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    <label>Dureée(en jour)</label>
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.nbrper)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    <label>Commentaire</label>
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.CommentaireF)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    <label>Justificatif</label>
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Justificatif)
+                                </dd>
+
+                            </dl>
+                            @using (Html.BeginForm())
+                            {
+
+                            <p>
+                                <div class="kt-form__actions">
+                                    <input type="hidden" asp-for="NoteDeFrais.NoteDeFraisID" />
+                                    <input type="submit" value="Supprimer" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" />
+
+                                    <input type="button" style="margin-left: 400px;" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" value="Précédent" onclick="location.href='@Url.Action("Index", "Frais" )'" />
+
+                                </div>
+                                <!----input type="submit" value="Delete" /-->
+
+
+
+                            </p>
+
+                            }
+
+                        </div>
+                        <hr />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+

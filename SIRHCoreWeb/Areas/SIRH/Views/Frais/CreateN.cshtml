@@ -1,0 +1,283 @@
+﻿@model SIRHCoreDomain.NoteDeFrais
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    
+    <link href="~/css/pages/wizard/wizard-2.css" rel="stylesheet" type="text/css" />
+
+    <!--end::Page Custom Styles -->
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-heading kt-heading--md">
+            <center><h1><font color="#273746"> Créer une note de frais</font></h1> </center>
+        </div>
+        <div class="kt-portlet">
+            <div class="kt-portlet__body kt-portlet__body--fit">
+                <div class="kt-grid  kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2" data-ktwizard-state="step-first">
+                    <div class="kt-grid__item kt-wizard-v2__aside">
+
+                        <!--begin: Form Wizard Nav -->
+                        <div class="kt-wizard-v2__nav">
+                            <div class="kt-wizard-v2__nav-items kt-wizard-v2__nav-items--clickable">
+                                <div class="kt-wizard-v2__nav-item" data-ktwizard-type="step" data-ktwizard-state="current">
+                                    <div class="kt-wizard-v2__nav-body">
+                                        <div class="kt-wizard-v2__nav-icon">
+                                            <i class="flaticon2-paper"></i>
+                                        </div>
+                                        <div class="kt-wizard-v2__nav-label">
+                                            <div class="kt-wizard-v2__nav-label-title">
+                                                1. Ajouter une novelle note de frais
+                                            </div>
+                                            <div class="kt-wizard-v2__nav-label-desc">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!--end: Form Wizard Nav -->
+                    </div>
+                    <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v2__wrapper">
+                        <!--begin: Form Wizard Form-->
+                        <div class="kt-form" id="kt_form">
+
+                            <!--begin: Form Wizard Step 1-->
+                            <div class="kt-wizard-v2__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
+                                <div class="kt-heading kt-heading--md">Remplir la demande</div>
+                                <div class="kt-form__section kt-form__section--first">
+                                    <div class="kt-wizard-v2__form">
+                                        
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <div class="form-group">
+
+                                                    <label> Date de Dépôt de la demande: <i class="fa fa-calendar"></i> </label>
+                                                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @name = "DateDeb", @id = "DateDeb", @required = "Date de debut " } })
+                                                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+
+
+                                                    <!----input type="date" class="form-control" name="date_entr" id="d_entre" required placeholder="Date de debut "-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>Type de Frais:</label>
+                                                    @Html.DropDownListFor(model => model.Type, new SelectList(new string[] { "Frais de déplacements", "Frais de séjours" }, "Frais de séjours"), htmlAttributes: new { @class = "form-control" })
+
+                                                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>Montant (en DT):</label>
+                                                    @Html.EditorFor(model => model.Montant, new { htmlAttributes = new { @class = "form-control", @name = "date_anc", @id = "d_ancien", @required = "Date de fin" } })
+                                                    @Html.ValidationMessageFor(model => model.Montant, "", new { @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>
+                                                        Nombre d'invités:
+                                                    </label>
+                                                    @Html.EditorFor(model => model.nbrper, new { htmlAttributes = new { @class = "form-control", @name = "date_anc", @id = "d_ancien", @required = "Date de fin" } })
+                                                    @Html.ValidationMessageFor(model => model.nbrper, "", new { @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>Informations supplémentaires </label>
+                                                    @Html.TextAreaFor(model => model.CommentaireF, 5, 40, new { @class = "form-control", @name = "comm", @id = "comm_col" })
+                                                    @Html.ValidationMessageFor(model => model.CommentaireF, "", new { @class = "text-danger" })
+                                                    <!----textarea type="" class="form-control" id="comm_col" cols="40" rows="5" name="comm" required placeholder="Votre commentaire..."></!--textarea-->
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-9 col-xl-6">
+                                            <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar_1">
+
+                                                <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Ajouter un justificatif">
+                                                    <i class="flaticon-attachment"></i>
+                                                    @Html.EditorFor(model => model.Justificatif, new { htmlAttributes = new { @type = "file", @name = "Justificatif", @accept = "image/*" } })
+                                                    @Html.ValidationMessageFor(model => model.Justificatif, "")
+
+
+                                                    <!----input type="file" name="Justificatif" accept="image/*"-->
+                                                </label>
+                                                <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Annuler l'ajout">
+                                                    <i class="fa fa-times"></i>
+                                                </span>
+                                            </div>
+                                            <span class="form-text text-muted">Ajouter un justificatif depuis votre ordinateur.</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--begin: Form Wizard Step 6-->
+                            <div class="kt-wizard-v2__content" data-ktwizard-type="step-content">
+                                <div class="kt-heading kt-heading--md">validation</div>
+                                <div class="kt-form__section kt-form__section--first">
+                                    <div class="kt-wizard-v2__review">
+                                        <div class="kt-wizard-v2__review-item">
+                                            <div class="kt-wizard-v2__review-title">
+                                                Demande de congé
+                                            </div>
+                                            <div class="kt-wizard-v2__review-content" id="inf_gen">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end: Form Wizard Step 6-->
+                            <!--begin: Form Actions -->
+                            <div class="kt-form__actions">
+
+                                <button class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u" data-ktwizard-type="submit">
+                                    envoyer
+                                </button>
+                            </div>
+                            <!--end: Form Actions -->
+                            <!----/form-->
+                        </div>
+
+                        <!--end: Form Wizard Form-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    }
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<style type="text/css">
+    .form-style-5 {
+        max-width: 2000px;
+        padding: 10px 20px;
+        background: #f4f7f8;
+        margin: 10px auto;
+        padding: 20px;
+        background: #f4f7f8;
+        border-radius: 8px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+    }
+
+        .form-style-5 fieldset {
+            border: none;
+        }
+
+        .form-style-5 legend {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .form-style-5 label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-style-5 input[type="text"],
+        .form-style-5 input[type="date"],
+        .form-style-5 input[type="datetime"],
+        .form-style-5 input[type="email"],
+        .form-style-5 input[type="number"],
+        .form-style-5 input[type="search"],
+        .form-style-5 input[type="time"],
+        .form-style-5 input[type="url"],
+        .form-style-5 textarea,
+        .form-style-5 select {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            background: rgba(255,255,255,.1);
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            margin: 0;
+            outline: 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            background-color: #e8eeef;
+            color: #8a97a0;
+            -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+            margin-bottom: 30px;
+        }
+
+            .form-style-5 input[type="text"]:focus,
+            .form-style-5 input[type="date"]:focus,
+            .form-style-5 input[type="datetime"]:focus,
+            .form-style-5 input[type="email"]:focus,
+            .form-style-5 input[type="number"]:focus,
+            .form-style-5 input[type="search"]:focus,
+            .form-style-5 input[type="time"]:focus,
+            .form-style-5 input[type="url"]:focus,
+            .form-style-5 textarea:focus,
+            .form-style-5 select:focus {
+                background: #d2d9dd;
+            }
+
+        .form-style-5 select {
+            -webkit-appearance: menulist-button;
+            height: 35px;
+        }
+
+        .form-style-5 .number {
+            background: #1abc9c;
+            color: #fff;
+            height: 30px;
+            width: 30px;
+            display: inline-block;
+            font-size: 0.8em;
+            margin-right: 4px;
+            line-height: 30px;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+            border-radius: 15px 15px 15px 0px;
+        }
+
+        .form-style-5 input[type="submit"],
+        .form-style-5 input[type="button"] {
+            position: relative;
+            display: block;
+            padding: 19px 39px 18px 39px;
+            color: #FFF;
+            margin: 0 auto;
+            background: #1abc9c;
+            font-size: 18px;
+            text-align: center;
+            font-style: normal;
+            width: 100%;
+            border: 1px solid #16a085;
+            border-width: 1px 1px 3px;
+            margin-bottom: 10px;
+        }
+
+            .form-style-5 input[type="submit"]:hover,
+            .form-style-5 input[type="button"]:hover {
+                background: #109177;
+            }
+</style>

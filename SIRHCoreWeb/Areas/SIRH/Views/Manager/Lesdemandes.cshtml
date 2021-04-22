@@ -1,0 +1,122 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<SIRHCoreDomain.Conge>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1></h1>
+
+                
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-heading kt-heading--md">
+        <center> <h1><font color="#273746">Consulter toutes ses demandes de Congés </font></h1> </center>
+    </div>
+    
+    <div class="kt-portlet">
+        <div class="kt-portlet__body kt-portlet__body--fit">
+            <div class="kt-grid  kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2" data-ktwizard-state="step-first">
+                <div class="kt-grid__item kt-wizard-v2__aside">
+                    <div>
+                        <div><div><p><label>    </label></p></div></div>
+                    </div>
+
+                    <form class="form-inline">
+                        <div>
+                            <div><div><p><label>    </label></p></div></div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="form-group mx-sm-3 mb-2">     Statut:</label>
+
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+
+                            <input type="Text" class="form-control" name="search" placeholder="Statut">
+
+
+                        </div>
+                        <button type="submit" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2 ">Filtrer</button>
+                    </form>
+
+                    <div>
+                        <div><div><p></p></div></div>
+                    </div>
+                    <div>
+                        <div><div><p><label>    </label></p></div></div>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col"> ID </th>
+                                <th scope="col">  Date de début </th>
+                                <th scope="col"> Date de fin</th>
+                                <th scope="col"> Type</th>
+                               
+                               
+
+                                <th scope="col"> Statut</th>
+                                <th scope="col"> Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CongeID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateDeb)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateFin)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.type)
+                                </td>
+                                
+                                
+
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Statut)
+                                </td>
+                               
+
+                                <td>
+                                    <input type="button" style="color:#48C9B0;" class="btn btn-outline-dark" value="Traiter" onclick="location.href='@Url.Action("Reponse", "Manager", new { id = item.CongeID })'" />
+                                
+                                </td>
+
+                            </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+                @using (Html.BeginForm())
+                {
+
+                    <p>
+                        <div class="kt-form__actions">
+
+                            <i type="button" style="font-size:20px;color:#48C9B0;margin-left: 1000px;" class="fa fa-angle-double-left" value="Précédent" onclick="location.href='@Url.Action("ListUsers", "Manager" )'"></i>
+                            
+                        </div>
+                        <!----input type="submit" value="Delete" /-->
+
+
+
+                    </p>
+
+                }
+
+            </div>
+        </div>
+    </div>
+
+</div>

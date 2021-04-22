@@ -1,0 +1,313 @@
+﻿@model IEnumerable<SIRHCoreData.Models.DB.TblDwSalarie>
+
+@{
+    ViewData["Title"] = "Liste Colaborateur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/datatables.min.css" rel="stylesheet" />
+<div class="kt-portlet kt-portlet--mobile">
+    <div class="kt-portlet__head kt-portlet__head--lg">
+        <div class="kt-portlet__head-label">
+            <span class="kt-portlet__head-icon">
+                <i class="kt-font-brand flaticon-users"></i>
+            </span>
+            <h3 class="kt-portlet__head-title">
+                Collaborateurs
+            </h3>
+        </div>
+        @*<div class="kt-portlet__head-toolbar">
+                <div class="kt-portlet__head-wrapper">
+
+                    <div class="kt-portlet__head-actions">
+                        <div class="dropdown dropdown-inline">
+                            <button type="button" id="excelexport" class="btn btn-default btn-icon-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="la la-download"></i> Export
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__section kt-nav__section--first">
+                                        <span class="kt-nav__section-text">Choose an option</span>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon la la-print"></i>
+                                            <span class="kt-nav__link-text">Print</span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon la la-copy"></i>
+                                            <span class="kt-nav__link-text">Copy</span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+
+                                        <a href="JavaScript:void(0);" onclick="getCollab()" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon la la-file-excel-o"></i>
+                                            <span class="kt-nav__link-text">Excel</span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon la la-file-text-o"></i>
+                                            <span class="kt-nav__link-text">CSV</span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon la la-file-pdf-o"></i>
+                                            <span class="kt-nav__link-text">PDF</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        &nbsp;
+
+                    </div>
+
+                </div>
+            </div>*@
+
+    </div>
+    <div class="kt-portlet__body">
+
+        <div class="kt-portlet__body kt-portlet__body--fit">
+
+            <!--begin: Datatable -->
+
+            <table id="exceltable" class="display">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Matricule)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Civilite)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nom)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Prenom)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Tel)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Matricule)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Civilite)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Prenom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tel)
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-outline-warning btn-elevate btn-icon"><i class="la la-trash"></i></button>
+                                <button type="button" class="btn btn-outline-success btn-elevate btn-icon"><i class="la la-edit"></i></button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--end: Datatable -->
+</div>
+
+@section scripts{
+
+    
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+
+
+    <script>
+
+
+        $(document).ready(function () {
+        // $.ajax({
+        //       url : '/Home/listcolab',
+        //       type : 'GET',
+        //       dataType : 'json', // On désire recevoir du HTML
+        //     success: function (code_html) { // code_html contient le HTML renvoyé
+        //         for (var i = 0; i < length; i++) {
+
+        //         }
+        //            console.log(code_html)
+        //       }
+        //});
+
+
+            $('#exceltable').DataTable({
+                dom: 'Bfrtip',
+                language: { "search": "" },
+                ordering: false,
+                //kt-nav__link-icon la la-file-excel-o
+                ajax: {
+                    url: "/Home/listcolab",
+                    type: 'POST'
+                },
+                columns: [
+                    { data: "Matricule" },
+                    { data: "Civilite" },
+                    { data: "Nom" },
+                    { data: "Prenom" },
+                    { data: "Email" },
+                    { data: "Tel" }
+                ],
+                buttons: [
+                    { extend: 'copy', text: 'Copy', className: 'btn btn-outline-brand btn-elevate btn-icon' },
+                    { extend: 'csv', text: 'CSV', className: 'btn btn-outline-brand btn-elevate btn-icon' },
+                    { extend: 'excel', text: 'Excel', className: 'btn btn-outline-brand btn-elevate btn-icon' },
+                    { extend: 'pdf', text: 'PDF', className: 'btn btn-outline-brand btn-elevate btn-icon' },
+                    { extend: 'print', text: 'Imprimer', className: 'btn btn-outline-brand btn-elevate btn-icon' }
+                ],
+                initComplete: function () {
+                    //dataTables_paginate paging_simple_numbers for pagination   with kt-pagination__links
+                    //$(".dataTables_paginate").addClass("kt-pagination__links");
+                    //$(".dataTables_paginate").removeClass("dataTables_paginate");
+                    //$(".paging_simple_numbers").removeClass("paging_simple_numbers");
+
+
+                    $('.buttons-excel').html('<i class="fas fa-file-excel"></i>');
+                    $('.buttons-excel').removeClass('dt-button buttons-excel');
+                    $('.buttons-excel').removeClass('buttons-html5');
+
+                    $('.buttons-pdf').html('<i class="fas fa-file-pdf"></i>');
+                    $('.buttons-pdf').removeClass('dt-button buttons-excel');
+                    $('.buttons-pdf').removeClass('buttons-html5');
+
+                    $('.buttons-csv').html('<i class="fas fa-file-csv"></i>');
+                    $('.buttons-csv').removeClass('dt-button buttons-excel');
+                    $('.buttons-csv').removeClass('buttons-html5');
+
+                    $('.buttons-print').html('<i class="fas fa-print"></i>');
+                    $('.buttons-print').removeClass('dt-button buttons-excel');
+                    $('.buttons-print').removeClass('buttons-html5');
+
+                    $('.buttons-copy').html('<i class="fas fa-copy"></i>');
+                    $('.buttons-copy').removeClass('dt-button buttons-excel');
+                    $('.buttons-copy').removeClass('buttons-html5');
+
+                }
+            });
+            $("#exceltable_filter input").addClass("form-control");
+            $("#exceltable_filter input").removeAttr("placeholder");
+
+            $("#exceltable_filter input").attr("placeholder", "Chercher");
+
+
+
+            $(".kt-portlet__body").fadeIn(1000);
+
+            $('#exceltable tbody').on('click', 'tr', function () {
+                var data = $('#exceltable').DataTable().row( this ).data();
+                alert( 'You clicked on '+data[0]+'\'s row' );
+            });
+        });
+    </script>
+
+
+    @*<script>
+            $(document).ready(function () {
+                $('.kt-datatable').KTDatatable({
+                    // layout definition
+                    layout: {
+                        scroll: false, // enable/disable datatable scroll both horizontal and vertical when needed.
+                        // height: 450, // datatable's body's fixed height
+                        footer: false, // display/hide footer
+                    },
+
+                    // column sorting
+                    sortable: true,
+
+                    pagination: true,
+
+                    search: {
+                        input: $('#generalSearch'),
+                    }
+                });
+            });
+            function getCollab() {
+                $.ajax({
+                    url: '/Home/listcolab',
+                    type: 'GET',
+                    dataType: 'json', // On désire recevoir du HTML
+                    success: function (data, statut) { // code_html contient le HTML renvoyé
+                        save(data);
+                    }
+                });
+            }
+            function save(data) {
+                $("#dvjson").excelexportjs({
+                    containerid: null,
+                    datatype: 'json',
+                    dataset: data,
+                    columns: getColumns(data)
+                });
+            }
+
+            function exportTableToExcel(tableID, filename = 'Collaborateur') {
+                var downloadLink;
+                var dataType = 'application/vnd.ms-excel';
+                var tableSelect = document.getElementById(tableID);
+                var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+                // Specify file name
+                filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+                // Create download link element
+                downloadLink = document.createElement("a");
+
+                document.body.appendChild(downloadLink);
+
+                if (navigator.msSaveOrOpenBlob) {
+                    var blob = new Blob(['\ufeff', tableHTML], {
+                        type: dataType
+                    });
+                    navigator.msSaveOrOpenBlob(blob, filename);
+                } else {
+                    // Create a link to the file
+                    downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                    // Setting the file name
+                    downloadLink.download = filename;
+
+                    //triggering the function
+                    downloadLink.click();
+                }
+            }
+        </script>*@
+}

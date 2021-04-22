@@ -1,0 +1,129 @@
+﻿@page
+@model SIRHCoreWeb.Areas.SIRH.Pages.Incidents.DetailModel
+@{Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <link href="~/css/pages/wizard/wizard-2.css" rel="stylesheet" type="text/css" />
+
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-heading kt-heading--md">
+
+            <center><h1><font color="#273746"> Incident</font></h1> </center>
+        </div>
+        <div class="kt-portlet">
+            <div class="kt-portlet__body kt-portlet__body--fit">
+                <div class="kt-grid  kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2" data-ktwizard-state="step-first">
+                    <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v2__wrapper">
+                        <div class="kt-form" id="kt_form">
+
+
+                            <div class="row">
+
+
+                                <div class="col-xl-6">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Incident.Id)
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label>Description:</label>
+                                                @Html.TextAreaFor(model => model.Incident.Description, 5, 40, new { @class = "form-control", @name = "desc", @id = "desc", @required = "Description....", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(model => model.Incident.Description, "", new { @class = "text-danger" })
+                                                @Html.HiddenFor(model => model.Incident.Description)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label>Date de Création <i class="fa fa-calendar"></i> </label>
+                                            @Html.EditorFor(model => model.Incident.DateCreation, new { htmlAttributes = new { @class = "form-control", @name = "datecree", @id = "datecree", @required = "Date de creation ", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Incident.DateCreation, "", new { @class = "text-danger" })
+                                            @Html.HiddenFor(model => model.Incident.DateCreation)
+                                        </div>
+                                        <div class="col">
+                                            <label>Date de Réglage <i class="fa fa-calendar"></i> </label>
+                                            @Html.EditorFor(model => model.Incident.DateReglage, new { htmlAttributes = new { @class = "form-control", @name = "datereglage", @id = "datereglage", @required = "Date de réglage", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.Incident.DateReglage, "", new { @class = "text-danger" })
+                                            @Html.HiddenFor(model => model.Incident.DateReglage)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label>créer Par:</label>
+                                                @Html.EditorFor(model => model.Incident.Creepar, new { htmlAttributes = new { @class = "form-control", @name = "creepar", @id = "creepar", @required = "Crée Par", @disabled = "disabled" } })
+                                                @Html.ValidationMessageFor(model => model.Incident.Creepar, "", new { @class = "text-danger" })
+                                                @Html.HiddenFor(model => model.Incident.Creepar)
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label>Réglée Par:</label>
+                                                @Html.EditorFor(model => model.Incident.Modifiepar, new { htmlAttributes = new { @class = "form-control", @name = "modifepar", @id = "modifepar", @required = "modifé Par", @disabled = "disabled" } })
+                                                @Html.ValidationMessageFor(model => model.Incident.Modifiepar, "", new { @class = "text-danger" })
+                                                @Html.HiddenFor(model => model.Incident.Modifiepar)
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-group">
+                                                <label>Attribué:</label>
+                                                @Html.EditorFor(model => model.Incident.Attribution, new { htmlAttributes = new { @class = "form-control", @name = "Attribution", @id = "Attribution", @required = "Attribution", @disabled = "disabled" } })
+                                                @Html.ValidationMessageFor(model => model.Incident.Attribution, "", new { @class = "text-danger" })
+                                                @Html.HiddenFor(model => model.Incident.Attribution)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="kt-wizard-v2__content" data-ktwizard-type="step-content">
+                                <div class="kt-heading kt-heading--md">validation</div>
+                                <div class="kt-form__section kt-form__section--first">
+                                    <div class="kt-wizard-v2__review">
+                                        <div class="kt-wizard-v2__review-item">
+                                            <div class="kt-wizard-v2__review-title">
+                                                Incident
+                                            </div>
+                                            <div class="kt-wizard-v2__review-content" id="inf_gen">
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            @using (Html.BeginForm())
+                            {
+                                <div class="kt-form__actions">
+
+
+
+                                    <input type="button" style="margin-left: 810px;" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" value="Précédent" onclick="location.href='@Url.Action("Indexliste", "Incident" )'" />
+
+
+                                </div>
+                            }
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                }
+                <div>
+
+                    @Html.ActionLink("Back to List", "Index")
+
+                </div>

@@ -1,0 +1,204 @@
+﻿
+@model SIRHCoreDomain.NoteDeFrais
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <link href="~/css/pages/wizard/wizard-2.css" rel="stylesheet" type="text/css" />
+
+    <!--end::Page Custom Styles -->
+
+
+
+
+
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-heading kt-heading--md">
+            <center><h1><font color="#273746"> Note de frais </font></h1> </center>
+        </div>
+        <div class="kt-portlet">
+            <div class="kt-portlet__body kt-portlet__body--fit">
+                <div class="kt-grid  kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2" data-ktwizard-state="step-first">
+                    <!----div class="kt-grid__item kt-wizard-v2__aside">
+
+                        <!--begin: Form Wizard Nav -->
+                        <!--div class="kt-wizard-v2__nav">
+
+                            <!--doc: Remove "kt-wizard-v2__nav-items--clickable" class and also set 'clickableSteps: false' in the JS init to disable manually clicking step titles -->
+                            <!----div class="kt-wizard-v2__nav-items kt-wizard-v2__nav-items--clickable">
+                                <div class="kt-wizard-v2__nav-item" data-ktwizard-type="step" data-ktwizard-state="current">
+                                    <div class="kt-wizard-v2__nav-body">
+                                        <div class="kt-wizard-v2__nav-icon">
+                                            <i class="fa fa-pen"></i>
+                                        </div>
+                                        <div class="kt-wizard-v2__nav-label">
+                                            <div class="kt-wizard-v2__nav-label-title">
+                                                1. Modifier la demande
+                                            </div>
+                                            <div class="kt-wizard-v2__nav-label-desc">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+
+                            </!--div-->
+                        <!----/div>
+
+                        <!--end: Form Wizard Nav -->
+                    <!----/-div-->
+                    <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v2__wrapper">
+                        <!--begin: Form Wizard Form-->
+                        <div class="kt-form" id="kt_form">
+                            <!----form class="kt-form" action="/Home/InsertUser" id="kt_form"-->
+                            <!--begin: Form Wizard Step 1-->
+                            <div class="kt-wizard-v2__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
+                                <div class="kt-heading kt-heading--md"></div>
+                                <div class="kt-form__section kt-form__section--first">
+                                    <div class="kt-wizard-v2__form">
+                                        <div class="row">
+
+
+                                            <div class="col-xl-6">
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                @Html.HiddenFor(model => model.NoteDeFraisID)
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label>Date de dépot <i class="fa fa-calendar"></i> </label>
+                                                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @name = "date_entr", @id = "d_entre", @required = "Date de debut ", @disabled = "disabled" } })
+
+
+                                                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                                        @Html.HiddenFor(model => model.Date)
+                                                    </div>
+                                                    
+                                                    <div class="col">
+                                                        <label>Type de frais  </label>
+                                                        @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control", @name = "date_anc", @id = "d_ancien", @required = "Date de fin", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                                                        @Html.HiddenFor(model => model.Type)
+                                                    </div>
+
+                                                     <div class="col">
+                                                        <label>Montant(en DT)<i class="fa fa-calendar"></i> </label>
+                                                        @Html.EditorFor(model => model.Montant, new { htmlAttributes = new { @class = "form-control", @name = "date_anc", @id = "d_ancien", @required = "Date de fin", @disabled = "disabled" } })
+                                                        @Html.ValidationMessageFor(model => model.Montant, "", new { @class = "text-danger" })
+                                                        @Html.HiddenFor(model => model.Montant)
+                                                    </div>
+                                                     <div class="col">
+                                                         <label>Nombre d'invités </label>
+                                                         @Html.EditorFor(model => model.nbrper ,new { htmlAttributes = new { @class = "form-control", @name = "date_anc", @id = "d_ancien", @required = "Date de fin", @disabled = "disabled" } })
+                                                         @Html.ValidationMessageFor(model => model.nbrper, "", new { @class = "text-danger" })
+                                                         @Html.HiddenFor(model => model.nbrper)
+                                                     </div>
+                                                    <!----input type="date" class="form-control" name="date_entr" id="d_entre" required placeholder="Date de debut "-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div><p></p></div>
+                                        <div class="row">
+                                          
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>Votre Commentaire:</label>
+                                                    @Html.TextAreaFor(model => model.CommentaireF, 5, 40, new { @class = "form-control", @name = "comm", @id = "comm_col", @required = "Votre commentaire...", @disabled = "disabled" })
+                                                    @Html.ValidationMessageFor(model => model.CommentaireF, "", new { @class = "text-danger" })
+                                                    @Html.HiddenFor(model => model.CommentaireF)
+                                                    <!----textarea type="" class="form-control" id="comm_col" cols="40" rows="5" name="comm" required placeholder="Votre commentaire..."></!--textarea-->
+                                                </div>
+                                                <div class="form-group">
+                                                    <label> Commentaire de la RH:</label>
+                                                    @Html.TextAreaFor(model => model.CommentaireRH, 5, 40, new { @class = "form-control", @name = "comm", @id = "comm_col", @required = "Votre commentaire...", @disabled = "disabled" })
+                                                    @Html.ValidationMessageFor(model => model.CommentaireRH, "", new { @class = "text-danger" })
+                                                    @Html.HiddenFor(model => model.CommentaireRH)
+                                                    <!----textarea type="" class="form-control" id="comm_col" cols="40" rows="5" name="comm" required placeholder="Votre commentaire..."></!--textarea-->
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>Etat de la demande:</label>
+                                                    @Html.DropDownListFor(model => model.Statut, new SelectList(new string[] { "Accepter", "Refuser", "à valider" }, "à valider"), htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+                                                    @Html.ValidationMessageFor(model => model.Statut, "", new { @class = "text-danger" })
+
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group">
+                                                    <label>Traitée par:</label>
+                                                    @Html.EditorFor(model => model.RH, new { htmlAttributes = new { @class = "form-control", @name = "date_anc", @id = "d_ancien", @required = "Date de fin", @disabled = "disabled" } })
+                                                    @Html.ValidationMessageFor(model => model.RH, "", new { @class = "text-danger" })
+                                                    @Html.HiddenFor(model => model.RH)
+                                                    <!----input type="date" class="form-control" name="date_anc" id="d_ancien" required placeholder="Date de fin"-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end: Form Wizard Step 1-->
+                            <!--begin: Form Wizard Step 5-->
+                            <!--end: Form Wizard Step 5-->
+                            <!--begin: Form Wizard Step 6-->
+                            <div class="kt-wizard-v2__content" data-ktwizard-type="step-content">
+                                <div class="kt-heading kt-heading--md">validation</div>
+                                <div class="kt-form__section kt-form__section--first">
+                                    <div class="kt-wizard-v2__review">
+                                        <div class="kt-wizard-v2__review-item">
+                                            <div class="kt-wizard-v2__review-title">
+                                                Demande de congé
+                                            </div>
+                                            <div class="kt-wizard-v2__review-content" id="inf_gen">
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end: Form Wizard Step 6-->
+                            <!--begin: Form Actions -->
+                            @using (Html.BeginForm())
+                            {
+                                <div class="kt-form__actions">
+
+
+
+                                    <input type="button" style="margin-left: 810px;" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" value="Précédent" onclick="location.href='@Url.Action("Index", "Frais" )'" />
+
+
+                                </div>
+                                }
+                                <!--end: Form Actions -->
+                                <!----/form-->
+                            </div>
+
+
+
+                        <!--end: Form Wizard Form-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

@@ -1,0 +1,198 @@
+﻿@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="kt-grid__item kt-grid__item--fluid kt-app__content">
+    <div class="kt-heading kt-heading--md">
+        <center><h1><font color="#273746"> Gestion des rôles </font></h1> </center>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+
+
+                </div>
+                <div class="kt-form kt-form--label-right">
+                    <div class="kt-portlet__body">
+                        <div class="kt-section kt-section--first">
+                            <div class="kt-section__body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div class="row">
+                                    <label class="col-xl-3"></label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <h3 class="kt-section__title kt-section__title-sm">Attribuer des rôles aux utlisateurs</h3>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Utilisateur</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <div class="input-group">
+
+
+                                            @using (Html.BeginForm("ManageUserRoles", "Admin", "SIRH"))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.ValidationSummary(true)
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...", htmlAttributes: new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Rôle:</label>
+                                                    </div>
+                                                    <div class="col">
+
+                                                        @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...", htmlAttributes: new { @class = "form-control" })
+                                                    </div>
+
+
+                                                    <div class="col">
+                                                        <input type="submit" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" value="Attribuer" />
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="message-success" style="color:darkred;">@ViewBag.ResultMessages</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <label class="col-xl-3"></label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <h3 class="kt-section__title kt-section__title-sm">Supprimer un rôle d'un utlisateur</h3>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Utilisateur</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <div class="input-group">
+
+
+                                            @using (Html.BeginForm("DeleteRoleForUser", "Admin", "SIRH"))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.ValidationSummary(true)
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...", htmlAttributes: new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label"> Rôle:</label>
+                                                    </div>
+                                                    <div class="col">
+
+                                                        @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...", htmlAttributes: new { @class = "form-control" })
+                                                    </div>
+
+
+                                                    <div class="col">
+                                                        <input type="submit" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" value="Supprimer" />
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="message-success" style="color:darkred;">@ViewBag.ResultMessage</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div class="row">
+                                    <label class="col-xl-3"></label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <h3 class="kt-section__title kt-section__title-sm"> Afficher les rôles des utilisateurs:</h3>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Utitlisateur</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <div class="input-group">
+
+                                            @using (Html.BeginForm("GetRoles", "Admin", "SIRH"))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                <div class="row">
+                                                    <div class="col">
+                                                        @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...", htmlAttributes: new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col"></div>
+                                                    <div class="col">
+                                                        <input type="submit" class="btn btn-secondary btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" style="width:190px; margin-left: -50px;" value="Afficher" />
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="message-success" style="color:darkred;">@ViewBag.ResultMessagess</div>
+                                            <div class="row">
+                                                @if (ViewBag.RolesForThisUser != null)
+                                                {
+                                                    <div style="background-color:white;margin-left: 25px;">
+                                                        <h5>Les rôles de cet utilisateur </h5>
+                                                        <ol>
+                                                            @foreach (string s in ViewBag.RolesForThisUser)
+                                                            {
+                                                                <li>@s</li>
+                                                            }
+                                                        </ol>
+                                                    </div>
+
+                                                }
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <div class="row">
+                                <div class="col-lg-3 col-xl-3">
+                                </div>
+                                <div class="col-lg-9 col-xl-9">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model SIRHCoreDomain.Solde
+
+@{
+    ViewData["Title"] = "Solde";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-heading kt-heading--md">
+        <center><h1><font color="#273746">Votre solde des congés </font></h1></center>
+    </div>
+    <div class="kt-portlet">
+        <div class="kt-portlet__body kt-portlet__body--fit">
+            <div class="kt-grid  kt-wizard-v2 kt-wizard-v2--white" id="kt
+                     _wizard_v2" data-ktwizard-state="step-first">
+                <div class="kt-grid__item kt-wizard-v2__aside">
+                    <div class="kt-wizard-v2__nav">
+
+                        <!--doc: Remove "kt-wizard-v2__nav-items--clickable" class and also set 'clickableSteps: false' in the JS init to disable manually clicking step titles -->
+                        <div class="kt-wizard-v2__nav-items kt-wizard-v2__nav-items--clickable">
+                        </div>
+                    </div>
+                    <div>
+                        <h4></h4>
+                        <hr />
+
+                        <h5><center>Vous avez consommé les congés suivants: </center></h5>
+
+                        <div class="col-sm-9 " style="margin-left: 150px; margin-top: 80px;">
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped">
+                                        <thead class="table-responsive  table-info ">
+
+                                            <tr>
+                                                <th scope="col"> Congé annuel :</th>
+                                                <th scope="col">   @Html.DisplayFor(model => model.Annuel) jours</th>
+
+
+
+                                            </tr>
+
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="col">
+                                    <table class="table table-striped">
+                                        <thead class="table-responsive table-info">
+                                            <tr>
+                                                <th scope="col"> Congé de maernité:</th>
+                                                <th scope="col">   @Html.DisplayFor(model => model.Maternité) jours</th>
+
+
+
+                                            </tr>
+
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-striped">
+                                        <thead class=" table-responsive table-info">
+                                            <tr>
+                                                <th scope="col"> Congé de maladie :</th>
+                                                <th scope="col">   @Html.DisplayFor(model => model.Maladie) jours</th>
+
+
+
+                                            </tr>
+
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="col">
+                                    <table class="table table-striped">
+                                        <thead class="table-responsive table-info">
+                                            <tr>
+                                                <th scope="col"> Congé sans solde :</th>
+                                                <th scope="col">   @Html.DisplayFor(model => model.SansSolde) jours</th>
+
+
+
+                                            </tr>
+
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            @using (Html.BeginForm())
+                            {
+
+                                <p>
+                                    <div class="kt-form__actions">
+
+
+                                        <input type="button" style="margin-left: 680px;" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" value="Précédent" onclick="location.href='@Url.Action("ListUsers", "Manager" )'" />
+
+                                    </div>
+                                    <!----input type="submit" value="Delete" /-->
+
+
+
+                                </p>
+
+                            }
+
+                        </div>
+
+                        <hr />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
