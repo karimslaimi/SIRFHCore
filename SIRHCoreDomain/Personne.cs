@@ -32,6 +32,7 @@ namespace SIRHCoreDomain
         public virtual List<Conge> Conge { get; set; }
         public virtual List<Projet> Projets { get; set; }
         public virtual List<Collaboration> Collaborations { get; set; }
+        public virtual List<Taches> Taches { get; set; }
        // public virtual ICollection<Solde> Solde { get; set; }
         public virtual List<NoteDeFrais> NoteDeFrais { get; set; }
        

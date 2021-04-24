@@ -17,9 +17,20 @@ namespace SIRHCoreData.Infrastructure
             this.dbFactory = dbFactory;
         }
 
+        private ITachesRepository tachesRepository;
+        public ITachesRepository TachesRepository
+   
+        {
+            get { return tachesRepository = new TachesRepository(dbFactory); }
+        }
+
+
+
+
+
         private ICollaborateurRepository collaborateurRepository;
         public ICollaborateurRepository CollaborateurRepository
-        //IPersonneRepository IUnitOfWork.PersonneRepository
+    
         {
             get { return collaborateurRepository = new CollaborateurRepository(dbFactory); }
         }

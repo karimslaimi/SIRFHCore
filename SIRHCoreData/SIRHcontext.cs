@@ -31,10 +31,19 @@ namespace SIRHCoreData
             public DbSet<Document> Documents { get; set; }
             public DbSet<Projet> Projets { get; set; }
             public DbSet<Collaboration> collaborations { get; set; }
+            public DbSet<Taches> Taches { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            modelBuilder.Entity<Taches>(entity =>
+            {
+
+            entity.HasOne(x => x.creator).WithMany(s => s.Taches);
+                entity.HasOne(x => x.Projet).WithMany(s => s.Taches);
+            }
+            );
+            
             modelBuilder.Entity<Collaboration>(entity =>
             {
 

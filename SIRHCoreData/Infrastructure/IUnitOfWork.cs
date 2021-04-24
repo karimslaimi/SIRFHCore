@@ -16,6 +16,7 @@ namespace SIRHCoreData.Infrastructure
 
         IProjetRepository ProjetRepository { get; }
          ICollaborateurRepository CollaborateurRepository { get; }
+         ITachesRepository TachesRepository { get; }
     //  void Disposable();
     }
 

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using SIRHCoreService;
 using SIRHCoreDomain;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SIRHCoreWeb.Areas.SIRH.Controllers
 {
@@ -37,9 +38,306 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             this.userManager = userManager;
             service = new CongeService();
             servicef = new FraisService();
+            personneService = new PersonneService();
+            projetService = new ProjetService();
+            tachesService = new TachesService();
+
         }
         ICongeService service = null;
         IFraisService servicef = null;
+
+
+
+        IProjetService projetService = null;
+        IPersonneService personneService = null;
+        ITachesService tachesService = null;
+        /************************************/
+
+
+        [HttpGet]
+        public ActionResult addProject()
+        {
+            Projet projet = new Projet();
+
+            return View(projet);
+        }
+        [HttpPost]
+        public ActionResult addProject(Projet projet)
+        {
+            ModelState.Remove("createur");
+            if (ModelState.IsValid)
+            {
+
+                string name = User.Identity.Name;
+
+                try
+                {
+
+                    projet.datedeb = DateTime.Now;
+                    Personne personne = personneService.Get(x => x.UserName == name);
+                    if (personne.Projets == null)
+                    {
+                        personne.Projets = new List<Projet>();
+                    }
+                    personne.Projets.Add(projet);
+                    personneService.Update(personne);
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+
+
+            }
+            else
+            {
+                return View(projet);
+            }
+            return Redirect("projects");
+
+
+        }
+
+        public ActionResult projects()
+        {
+
+            List<Projet> _projects = projetService.GetAll().ToList();
+            return View(_projects);
+
+        }
+
+
+
+
+        public ActionResult deleteProject(int id)
+        {
+
+            Projet _project = projetService.GetById(id);
+
+            if (_project != null)
+            {
+
+                projetService.Delete(x => x.id == id);
+
+            }
+            return Redirect("projects");
+        }
+
+
+        [HttpGet]
+        public ActionResult EditProject(long id)
+        {
+            Projet projet = projetService.Get(x => x.id == id);
+
+            if (projet != null)
+            {
+                var collabs = userManager.GetUsersInRoleAsync("Collaborateur").Result;
+                ViewBag.collabs = collabs.Select(x =>
+                       new SelectListItem { Value = x.UserName.ToString(), Text = x.UserName }
+
+                ).ToList();
+
+                ViewBag.collaborateur = personneService.GetMany(x => x.Collaborations.Where(s => s.Projet.id == id).Any()).ToList();
+
+                return View(projet);
+            }
+            else
+            {
+                return Redirect("projects");
+            }
+        }
+
+
+
+
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult EditProject(Projet _projet)
+        {
+
+            if (ModelState.IsValid)
+            {
+                projetService.Update(_projet);
+
+                return Redirect("projects");
+            }
+            else
+            {
+                return View(_projet);
+            }
+
+
+        }
+
+
+        public ActionResult affectCollab(string username, int id, string rss)
+        {
+            if (id == 0)
+            {
+                if (!string.IsNullOrEmpty(rss))
+                {
+                    return RedirectToAction("DetailProject", new { id = id });
+                }
+                return RedirectToAction("Projects");
+            }
+            if (string.IsNullOrEmpty(username))
+            {
+                if (!string.IsNullOrEmpty(rss))
+                {
+                    return RedirectToAction("DetailProject", new { id = id });
+                }
+                return RedirectToAction("EditProject", new { id = id });
+            }
+            Projet projet = projetService.Get(x => x.id == id);
+            Personne personne = personneService.Get(x => x.UserName == username);
+            if (projet == null || personne == null)
+            {
+                if (!string.IsNullOrEmpty(rss))
+                {
+                    return RedirectToAction("DetailProject", new { id = id });
+                }
+                return RedirectToAction("EditProject", new { id = id });
+            }
+            
+            
+            
+            Collaboration collaboration = new Collaboration();
+            collaboration.Personne = personne;
+            collaboration.Projet = projet;
+           
+            
+            if (personne.Collaborations == null)
+            {
+                personne.Collaborations = new List<Collaboration>();
+            }
+
+
+            personne.Collaborations.Add(collaboration);
+            personneService.Update(personne);
+           
+            
+            
+            
+            if (!string.IsNullOrEmpty(rss))
+            {
+                return RedirectToAction("DetailProject", new { id = id });
+            }
+
+
+            return RedirectToAction("EditProject", new { id = id });
+        }
+
+        public ActionResult RemoveCollab(int projid, string userid, string rss)
+        {
+            if (projid == 0 || userid == "")
+            {
+                return RedirectToAction("Projects");
+            }
+            CollaborateurService collaborateurService = new CollaborateurService();
+            collaborateurService.Delete(x => x.Personne.Id == userid.ToString() && x.Projet.id == projid);
+
+            if (string.IsNullOrEmpty(rss))
+            {
+
+                return RedirectToAction("EditProject", new { id = projid });
+            }
+            else
+            {
+                return RedirectToAction("DetrailProject", new { id = projid });
+            }
+
+        }
+
+
+        public ActionResult DetailProject(int id)
+        {
+            Projet projet = projetService.GetProjet(id);
+            CollaborateurService collaborateurService = new CollaborateurService();
+            ViewBag.collab = personneService.GetMany(x => x.Collaborations.Where(s => s.Projet.id == id).Any());
+            var collabs = userManager.GetUsersInRoleAsync("Collaborateur").Result;
+            ViewBag.persons = collabs.Select(x =>
+                   new SelectListItem { Value = x.UserName.ToString(), Text = x.UserName }
+
+            ).ToList();
+           
+            
+            
+            TachesService tachesService = new TachesService();
+            ViewBag.taches = tachesService.GetTachesbyProjct(id);
+
+            return View(projet);
+        }
+
+
+
+
+
+        [HttpGet]
+        public ActionResult addTask(int projid)
+        {
+            Taches taches = new Taches();
+            ViewBag.project = projid;
+            return View(taches);
+        }
+
+        public ActionResult addTask(Taches taches,int projid)
+        {
+            ModelState.Remove("creator");
+            ModelState.Remove("Projet");
+            if (ModelState.IsValid)
+            {
+                string name = User.Identity.Name;
+                taches.Projet = projetService.Get(x => x.id == projid);
+                Personne personne= personneService.Get(x => x.UserName == name);
+
+               
+                 
+             
+                taches.date = DateTime.Now;
+                taches.state = "pending";
+
+
+
+                if (personne.Taches == null)
+                {
+                    personne.Taches = new List<Taches>();
+
+                }
+                personne.Taches.Add(taches);
+                personneService.Update(personne);
+
+                return RedirectToAction("DetailProject", new { id = projid });
+
+
+            }
+            else
+            {
+                ViewBag.project = projid;
+
+                return View(taches);
+            }
+        }
+
+
+
+        public ActionResult finishTask(int id)
+        {
+            Taches taches = tachesService.GetTaches(id);
+            taches.state = "finished";
+            tachesService.Update(taches);
+            return RedirectToAction("DetailProject", new { id = taches.Projet.id });
+        }
+
+
+
+
+
+
+
+
+
         //********************************Liste des utilisateurs**************************//
 
         [HttpGet]

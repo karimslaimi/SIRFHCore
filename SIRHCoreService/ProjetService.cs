@@ -75,7 +75,7 @@ namespace SIRHCoreService
 
         public Projet GetProjet(int id)
         {
-            return dbf.DataContext.Projets.Where(x=>x.id==id).Include(x => x.createur).FirstOrDefault();
+            return dbf.DataContext.Projets.Where(x=>x.id==id).Include(x => x.createur).Include(s=>s.collaborateurs).Include(s=>s.Taches).FirstOrDefault();
         }
 
         public Projet Getsolde(Expression<Func<Projet, bool>> where)

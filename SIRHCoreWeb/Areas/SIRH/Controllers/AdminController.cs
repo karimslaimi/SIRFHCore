@@ -64,7 +64,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             return View(projet);
         }
         [HttpPost]
-        public async Task<ActionResult> addProject(Projet projet)
+        public  ActionResult addProject(Projet projet)
         {
             ModelState.Remove("createur");
             if (ModelState.IsValid)
@@ -75,13 +75,18 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
                 try
                 {
-                    projet.createurId = personneService.Get(x => x.UserName == name).Id;
 
-                projet.datedeb = DateTime.Now;
-                projetService.Add(projet);
-               
+                    projet.datedeb = DateTime.Now;
+                    Personne personne = personneService.Get(x => x.UserName == name);
+                    if (personne.Projets == null)
+                    {
+                        personne.Projets = new List<Projet>();
+                    }
+                    personne.Projets.Add(projet);
+                    personneService.Update(personne);
 
-                }catch(Exception e)
+                }
+                catch(Exception e)
                 {
                     Console.WriteLine(e);
                 }
@@ -170,20 +175,32 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
         }
 
 
-        public ActionResult affectCollab(string username,int id)
+        public ActionResult affectCollab(string username,int id,string rss)
         {
             if (id == 0)
             {
+                if (!string.IsNullOrEmpty(rss))
+                {
+                    return RedirectToAction("DetailProject", new { id = id });
+                }
                 return RedirectToAction("Projects");
             }
             if (string.IsNullOrEmpty(username))
             {
+                if (!string.IsNullOrEmpty(rss))
+                {
+                    return RedirectToAction("DetailProject", new { id = id });
+                }
                 return RedirectToAction("EditProject", new { id = id });
             }
             Projet projet = projetService.Get(x=>x.id==id);
             Personne personne = personneService.Get(x => x.UserName == username);
             if(projet==null || personne == null)
             {
+                if (!string.IsNullOrEmpty(rss))
+                {
+                    return RedirectToAction("DetailProject", new { id = id });
+                }
                 return RedirectToAction("EditProject", new { id = id });
             }
             Collaboration collaboration = new Collaboration();
@@ -195,11 +212,14 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             }
             personne.Collaborations.Add(collaboration);
             personneService.Update(personne);
-          
+            if (!string.IsNullOrEmpty(rss))
+            {
+                return RedirectToAction("DetailProject", new { id = id });
+            }
             return RedirectToAction("EditProject", new { id = id });
         }
 
-        public ActionResult RemoveCollab(int projid, string userid)
+        public ActionResult RemoveCollab(int projid, string userid,string rss)
         {
             if(projid==0 || userid =="")
             {
@@ -207,18 +227,40 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             }
             CollaborateurService collaborateurService = new CollaborateurService();
             collaborateurService.Delete(x => x.Personne.Id == userid.ToString() && x.Projet.id == projid);
+
+            if (string.IsNullOrEmpty(rss))
+            {
+
             return RedirectToAction("EditProject", new { id = projid });
+            }
+            else
+            {
+                return RedirectToAction("DetrailProject", new { id = projid });
+            }
+
         }
 
 
         public ActionResult DetailProject(int id)
         {
             Projet projet = projetService.GetProjet(id);
+            CollaborateurService collaborateurService = new CollaborateurService();
+            ViewBag.collab = personneService.GetMany(x => x.Collaborations.Where(s=>s.Projet.id==id).Any());
+            var collabs = userManager.GetUsersInRoleAsync("Collaborateur").Result;
+            ViewBag.persons = collabs.Select(x =>
+                   new SelectListItem { Value = x.UserName.ToString(), Text = x.UserName }
+
+            ).ToList();
+            TachesService tachesService = new TachesService();
+            ViewBag.taches = tachesService.GetMany(x => x.Projet.id == id).ToList();
+
             return View(projet);
         }
 
 
 
+
+         
 
 
 

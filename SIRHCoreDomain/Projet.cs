@@ -15,11 +15,15 @@ namespace SIRHCoreDomain
         public string nom { get; set; }
         public DateTime datedeb { get; set; }
         public DateTime datefin { get; set; }
-        
+        public string description { get; set; }
+
         public string createurId { get; set; }
         public virtual Personne createur { get; set; }
 
         public virtual List<Collaboration> collaborateurs { get; set; }
+        public virtual List<Taches> Taches { get; set; }
+
+
 
     }
 }
