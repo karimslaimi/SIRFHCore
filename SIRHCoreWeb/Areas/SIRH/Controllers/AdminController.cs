@@ -102,10 +102,20 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
         }
 
-        public ActionResult projects()
+        public ActionResult projects(string search)
         {
+            List<Projet> _projects = null;
 
-            List<Projet> _projects = projetService.GetAll().ToList();
+            if (string.IsNullOrEmpty(search))
+            {
+            _projects = projetService.GetAll().ToList();
+
+            }
+            else
+            {
+                _projects = projetService.GetMany(x => x.nom.Contains(search) || x.description.Contains(search)).ToList();
+            }
+
             return View(_projects);
 
         }

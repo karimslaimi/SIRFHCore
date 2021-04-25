@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SIRHCoreData;
 
 namespace SIRHCoreData.Migrations
 {
     [DbContext(typeof(SIRHcontext))]
-    partial class SIRHcontextModelSnapshot : ModelSnapshot
+    [Migration("20210425053336_title col")]
+    partial class titlecol
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

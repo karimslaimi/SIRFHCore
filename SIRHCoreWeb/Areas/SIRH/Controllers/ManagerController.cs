@@ -41,7 +41,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             personneService = new PersonneService();
             projetService = new ProjetService();
             tachesService = new TachesService();
-
+            incidentService = new IncidentService();
         }
         ICongeService service = null;
         IFraisService servicef = null;
@@ -51,6 +51,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
         IProjetService projetService = null;
         IPersonneService personneService = null;
         ITachesService tachesService = null;
+        IIncidentService incidentService = null;
         /************************************/
 
 
@@ -99,15 +100,23 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
         }
 
-        public ActionResult projects()
+        public ActionResult projects(string search)
         {
+            List<Projet> _projects = null;
 
-            List<Projet> _projects = projetService.GetAll().ToList();
+            if (string.IsNullOrEmpty(search))
+            {
+                _projects = projetService.GetAll().ToList();
+
+            }
+            else
+            {
+                _projects = projetService.GetMany(x => x.nom.Contains(search) || x.description.Contains(search)).ToList();
+            }
+
             return View(_projects);
 
         }
-
-
 
 
         public ActionResult deleteProject(int id)
@@ -329,6 +338,147 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             tachesService.Update(taches);
             return RedirectToAction("DetailProject", new { id = taches.Projet.id });
         }
+
+
+
+
+
+        //manager add/remove/edit an incident
+        //affect a collab to fix an incident
+
+        [HttpGet]
+        public ActionResult addIncident()
+        {
+            Incident incident = new Incident();
+            return View(incident);
+        }
+
+
+        [HttpPost]
+        public ActionResult addIncident(Incident incident)
+        {
+            if (ModelState.IsValid)
+            {
+                incident.DateCreation = DateTime.Now;
+                incident.status = "En cours";
+                string name = User.Identity.Name;
+                Personne personne = personneService.Get(x => x.UserName == name);
+                if (personne.Incidents == null)
+                {
+                    personne.Incidents = new List<Incident>();
+                }
+                personne.Incidents.Add(incident);
+                personneService.Update(personne);
+                return RedirectToAction("incidents");
+
+            }
+            else
+            {
+                return View(incident);
+            }
+        }
+
+
+        public ActionResult incidents(bool mine,string search)
+        {
+            List<Incident> incidents = null;
+            if (mine == true)
+            {
+                string name = User.Identity.Name;
+                incidents = incidentService.GetMany(x => x.Creepar.UserName == name).ToList();
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    incidents = incidents.Where(x => x.Description.Contains(search) || x.status.Contains(search) || x.title.Contains(search)).ToList();
+                }
+            }
+            else
+            {
+                incidents = incidentService.GetAll().ToList();
+               
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    incidents = incidents.Where(x => x.Description.Contains(search) || x.status.Contains(search) || x.title.Contains(search)).ToList();
+                }
+            }
+
+            return View(incidents);
+        }
+
+
+        public ActionResult deleteIncident(int id)
+        {
+            incidentService.Delete(x => x.Id == id);
+            return RedirectToAction("incidents");
+        }
+
+
+        [HttpGet]
+        public ActionResult editIncident(int id)
+        {
+            Incident incident = incidentService.Get(x => x.Id == id);
+            return View(incident);
+
+        }
+
+        public ActionResult editIncident(Incident incident)
+        {
+            if (ModelState.IsValid)
+            {
+
+                incidentService.Update(incident);
+
+                return RedirectToAction("incidents");
+
+            }
+            else
+            {
+                return View(incident);
+            }
+        }
+
+        //i need to add a modal in list page, where he can affect collabs and then add the remaining work to the collab
+
+
+        public ActionResult affectIncident(int id,int userid)
+        {
+            Incident incident1 = incidentService.Get(i => i.Id == id);
+           Personne personne= personneService.Get(x => x.Id == userid+"");
+            if (personne.traitements == null)
+            {
+                personne.traitements = new List<Incident>();
+            }
+
+            personne.traitements.Add(incident1);
+            personneService.Update(personne);
+
+            return RedirectToAction("Incidents");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

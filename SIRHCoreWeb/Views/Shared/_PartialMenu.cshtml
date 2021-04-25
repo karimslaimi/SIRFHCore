@@ -104,9 +104,111 @@
                 </li>
 
             }
+            else if (User.Identity.IsAuthenticated && User.IsInRole("Collaborateur"))
+            {
+                <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fas fa-project-diagram"></i><span class="kt-menu__link-text">Liste des Projets</span></a>
+
+                    <div class="kt-menu__submenu ">
+                        <span class="kt-menu__arrow"></span>
+                        <ul class="kt-menu__subnav">
+                            <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Projets</span></span></li>
+                            <li class="kt-menu__item " aria-haspopup="true">
+                                <a onclick="location.href='@Url.Action("projects", "Collab", new { Area = "SIRH" })'" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                        <span></span>
+                                    </i><span class="kt-menu__link-text">Liste des projets</span>
+                                </a>
+                            </li>
+
+                            <li class="kt-menu__item " aria-haspopup="true">
+                                <a onclick="location.href='@Url.Action("myProjects", "Collab", new { Area = "SIRH" })'" class="kt-menu__link ">
+                                    <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                        <span></span>
+                                    </i><span class="kt-menu__link-text">Mes projets</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
 
 
 
+
+            }
+
+
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Responsable RH"))
+            {
+
+            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fas fa-project-diagram"></i><span class="kt-menu__link-text">Gestion des Incident</span></a>
+
+                <div class="kt-menu__submenu ">
+                    <span class="kt-menu__arrow"></span>
+                    <ul class="kt-menu__subnav">
+                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Incidents</span></span></li>
+                        <li class="kt-menu__item " aria-haspopup="true">
+                            <a onclick="location.href='@Url.Action("incidents", "Manager", new { Area = "SIRH" })'" class="kt-menu__link ">
+                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                    <span></span>
+                                </i><span class="kt-menu__link-text">Liste des incidents</span>
+                            </a>
+                        </li>
+
+                        <li class="kt-menu__item " aria-haspopup="true">
+                            <a onclick="location.href='@Url.Action("addIncident", "Manager", new { Area = "SIRH" })'" class="kt-menu__link ">
+                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                    <span></span>
+                                </i><span class="kt-menu__link-text">Ajouter un incident</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+            } else if (User.Identity.IsAuthenticated && User.IsInRole("Collaborateur"))
+            {
+            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon fas fa-project-diagram"></i><span class="kt-menu__link-text">Gestion des Incidents</span></a>
+
+                <div class="kt-menu__submenu ">
+                    <span class="kt-menu__arrow"></span>
+                    <ul class="kt-menu__subnav">
+                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Incidents</span></span></li>
+                        <li class="kt-menu__item " aria-haspopup="true">
+                            <a onclick="location.href='@Url.Action("incidents", "Collab", new { Area = "SIRH" })'" class="kt-menu__link ">
+                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                    <span></span>
+                                </i><span class="kt-menu__link-text">Liste des incidents</span>
+                            </a>
+                        </li>
+
+                        <li class="kt-menu__item " aria-haspopup="true">
+                            <a onclick="location.href='@Url.Action("mesIncident", "Collab", new { Area = "SIRH" })'" class="kt-menu__link ">
+                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                    <span></span>
+                                </i><span class="kt-menu__link-text">Mes incident</span>
+                            </a>
+                        </li>
+                        <li class="kt-menu__item " aria-haspopup="true">
+                            <a onclick="location.href='@Url.Action("toBeTreated", "Collab", new { Area = "SIRH" })'" class="kt-menu__link ">
+                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot">
+                                    <span></span>
+                                </i><span class="kt-menu__link-text">Incident à traiter</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+
+
+
+            }
 
             <li class="kt-menu__item " aria-haspopup="true"><a onclick="location.href='@Url.Action("RoleAddToUser", "Admin", new { Area = "SIRH" })'" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-shield"></i><span class="kt-menu__link-text">Administration</span></a></li>
             <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a class="kt-menu__link "><span class="kt-menu__link-text"></span></a></li>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SIRHCoreData.Repositories;
 using SIRHCoreDomain;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SIRHCoreService
 {
-   public  interface IIncidentService : IDisposable
+   public  interface IIncidentService : IIncidentRepository
     {
         void createIncident(Incident i);
         Incident GetIncident(int id);

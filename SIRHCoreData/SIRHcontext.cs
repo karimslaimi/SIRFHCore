@@ -4,10 +4,10 @@ using System.Text;
 //using SIRHCoreData.Models.DB;
 using SIRHCoreDomain;
 //using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Protocols;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+
+using Microsoft.EntityFrameworkCore;
 //using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 
@@ -36,6 +36,12 @@ namespace SIRHCoreData
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            modelBuilder.Entity<Incident>(entity =>
+            {
+                entity.HasOne(x => x.Creepar).WithMany(s => s.Incidents);
+                entity.HasOne(x => x.Attribution).WithMany(s => s.traitements);
+            });
+
             modelBuilder.Entity<Taches>(entity =>
             {
 
@@ -55,7 +61,7 @@ namespace SIRHCoreData
 
             modelBuilder.Entity<Personne>(entity =>
             {
-                entity.ToTable("AspNetUsers").HasNoDiscriminator();
+                entity.ToTable("Personne").HasNoDiscriminator();
                 entity.HasMany(c => c.Conge)
 
                       .WithOne(p => p.Personne);
@@ -91,7 +97,8 @@ namespace SIRHCoreData
                 entity.HasOne(x => x.createur);
             }
 
-            );
+            ); 
+        
 
             base.OnModelCreating(modelBuilder);
         }

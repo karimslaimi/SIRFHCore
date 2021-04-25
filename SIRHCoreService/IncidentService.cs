@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Microsoft.AspNetCore.Mvc;
 using SIRHCoreData.Infrastructure;
 using SIRHCoreDomain;
@@ -79,7 +80,62 @@ namespace SIRHCoreService
             utOfWork.Dispose();
         }
 
-        
-       
+        public void Update(Incident entity)
+        {
+            utOfWork.IncidentRepository.Update(entity);
+            utOfWork.Commit();
+        }
+
+        public void Updatee(Incident entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Incident entity)
+        {
+            utOfWork.IncidentRepository.Delete(entity);
+            utOfWork.Commit();
+        }
+
+        public void Delete(Expression<Func<Incident, bool>> where)
+        {
+            utOfWork.IncidentRepository.Delete(where);
+            utOfWork.Commit();
+        }
+
+        public Incident GetById(long Id)
+        {
+           return utOfWork.IncidentRepository.Get(w => w.Id == Id);
+        }
+
+        public Incident GetById(string Id)
+        {
+            return utOfWork.IncidentRepository.Get(w => w.Id.ToString()== Id);
+        }
+
+        public Incident Get(Expression<Func<Incident, bool>> where)
+        {
+            return utOfWork.IncidentRepository.Get(where);
+        }
+
+        public IEnumerable<Incident> GetAll()
+        {
+            return utOfWork.IncidentRepository.GetAll();
+        }
+
+        public IEnumerable<Incident> GetAlll(string user)
+        {
+            return utOfWork.IncidentRepository.GetMany(x=>x.Creepar.UserName==user);
+        }
+
+        public IEnumerable<Incident> GetMany(Expression<Func<Incident, bool>> where)
+        {
+            return utOfWork.IncidentRepository.GetMany(where);
+        }
+
+        public Incident Getsolde(Expression<Func<Incident, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

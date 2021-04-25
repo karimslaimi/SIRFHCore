@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
- 
+
 
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="kt-heading kt-heading--md">
@@ -20,7 +20,7 @@
                         <div><div><p><label>    </label></p></div></div>
                     </div>
 
-                    <form class="form-inline" method="post" action="@Url.Action("projects","Admin")">
+                    <form class="form-inline" method="post" action="@Url.Action("projects","Collab")">
                         <div>
                             <div><div><p><label>    </label></p></div></div>
                         </div>
@@ -43,6 +43,8 @@
                     <div>
                         <div><div><p><label>    </label></p></div></div>
                     </div>
+
+           
                     <table class="table table-striped">
                         <thead class="thead-dark">
                             <tr>
@@ -78,9 +80,9 @@
                                         @Html.DisplayFor(modelItem => item.createur.Nom)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Modifier", "EditProject", "Admin", new { id = item.id }, new { @class = "btn btn-outline-primary" })  |
-                                        @Html.ActionLink("Details", "DetailProject", "Admin", new { id = item.id }, new { @class = "btn btn-outline-success" })  |
-                                        @Html.ActionLink("Supprimer", "deleteProject", "Admin", new { id = item.id }, new { @class = "btn btn-outline-danger" })
+                                  
+                                        @Html.ActionLink("Details", "DetailProject", "Collab", new { id = item.id }, new { @class = "btn btn-outline-success" })  
+                                       
                                     </td>
                                 </tr>
                             }
@@ -89,7 +91,7 @@
 
 
                 </div>
-             
+
 
             </div>
         </div>

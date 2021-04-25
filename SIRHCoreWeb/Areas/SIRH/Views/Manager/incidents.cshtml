@@ -1,0 +1,118 @@
+﻿@model IEnumerable<SIRHCoreDomain.Incident>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-heading kt-heading--md">
+        <center> <h1><font color="#273746">Consulter toutes les projets </font></h1> </center>
+    </div>
+
+    <div class="kt-portlet">
+        <div class="kt-portlet__body kt-portlet__body--fit">
+            <div class="kt-grid  kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2" data-ktwizard-state="step-first">
+                <div class="kt-grid__item kt-wizard-v2__aside">
+
+             
+                        <form class="form-inline" method="post" action="@Url.Action("incidents","Manager")">
+                            <div>
+                                <div><div><p><label>    </label></p></div></div>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label class="form-group mx-sm-3 mb-2">     Recherche:</label>
+
+                            </div>
+                            <div class="form-group mx-sm-3 mb-2">
+
+                                <input type="Text" class="form-control" name="search" placeholder="mot clé">
+
+
+                            </div> 
+                            
+                            <div class="form-group mx-sm-3 mb-2">
+
+                                <div class="radio-inline">
+                                    <label class="radio">
+                                        <input type="radio" checked="checked" name="mine" value="false">
+                                        <span></span>Tous
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="mine" value="true">
+                                        <span></span>Mes
+                                    </label>
+                                    
+                                </div>
+
+
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2 ">Filtrer</button>
+                        </form>
+
+
+                         
+                   
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.title)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateCreation)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateReglage)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th><th>
+                                    @Html.DisplayNameFor(model => model.status)
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.title)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateCreation)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateReglage)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        <span class="label label-xl label-inline label-light-success"> @Html.DisplayFor(modelItem => item.status) </span>
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Modifier", "editIncident", "Manager", new { id = item.Id }, new { @class = "btn btn-outline-primary" })  |
+                                        @Html.ActionLink("Details", "DetailProject", "Manager", new { id = item.Id }, new { @class = "btn btn-outline-success" })  |
+                                        @Html.ActionLink("Supprimer", "deleteIncident", "Manager", new { id = item.Id }, new { @class = "btn btn-outline-danger" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
