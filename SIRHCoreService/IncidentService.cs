@@ -29,7 +29,10 @@ namespace SIRHCoreService
 
         }
 
-
+        public IEnumerable<Incident> GetAffectedIncident(string username)
+        {
+            return dbFactory.DataContext.Incidents.Where(s => s.Attribution.UserName == username).Include(x => x.Creepar).Include(s => s.Attribution);
+        }
         public void createIncident(Incident i)
         {
             utOfWork.IncidentRepository.Add(i);

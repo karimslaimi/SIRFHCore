@@ -16,6 +16,9 @@ namespace SIRHCoreService
 
         IEnumerable<Incident> GetIncident();
         IEnumerable<Incident> GetUserIncident(string username);
+        IEnumerable<Incident> GetAffectedIncident(string username);
+
+
 
         void UpdateIncident(Incident i);
         void DeleteIncident(Incident i);

@@ -197,7 +197,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
                 }
                 personne.Incidents.Add(incident);
                 personneService.Update(personne);
-                return RedirectToAction("incidents");
+                return RedirectToAction("mesIncident");
 
             }
             else
@@ -231,7 +231,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
         public ActionResult deleteIncident(int id)
         {
             incidentService.Delete(x => x.Id == id);
-            return RedirectToAction("incidents");
+            return RedirectToAction("mesIncident");
         }
 
 
@@ -250,7 +250,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
                 incidentService.Update(incident);
 
-                return RedirectToAction("incidents");
+                return RedirectToAction("mesIncident");
 
             }
             else
@@ -262,17 +262,23 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
         //i have to test these methods and add mark as treated
 
 
-        public ActionResult markAsTreated(int incid)
+        public ActionResult markAsTreated(int incid,string treatement)
         {
             Incident incident1 = incidentService.Get(i => i.Id == incid);
             incident1.DateReglage = DateTime.Now;
             incident1.status = "Traité";
+            incident1.Modifiepar = treatement;
             incidentService.Update(incident1);
 
-            return RedirectToAction("Incidents");
+            return RedirectToAction("toTreat");
         }
 
-
+        public ActionResult toTreat()
+        {
+            string name = User.Identity.Name;
+            List<Incident> incidents = incidentService.GetAffectedIncident(name).ToList();
+            return View(incidents);
+        }
 
 
 

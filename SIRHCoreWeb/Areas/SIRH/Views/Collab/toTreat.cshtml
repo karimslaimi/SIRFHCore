@@ -1,0 +1,214 @@
+﻿@model IEnumerable<SIRHCoreDomain.Incident>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-heading kt-heading--md">
+        <center> <h1><font color="#273746">Consulter toutes les projets </font></h1> </center>
+    </div>
+
+    <div class="kt-portlet">
+        <div class="kt-portlet__body kt-portlet__body--fit">
+            <div class="kt-grid  kt-wizard-v2 kt-wizard-v2--white" id="kt_wizard_v2" data-ktwizard-state="step-first">
+                <div class="kt-grid__item kt-wizard-v2__aside">
+
+
+                    <form class="form-inline" method="post" action="@Url.Action("incidents","Collab")">
+                        <div>
+                            <div><div><p><label>    </label></p></div></div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="form-group mx-sm-3 mb-2">     Recherche:</label>
+
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+
+                            <input type="Text" class="form-control" name="search" placeholder="mot clé">
+
+
+                        </div>
+
+                        <div class="form-group mx-sm-3 mb-2">
+
+                            <div class="radio-inline">
+                                <label class="radio">
+                                    <input type="radio" checked="checked" name="mine" value="false">
+                                    <span></span>Tous
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="mine" value="true">
+                                    <span></span>Mes
+                                </label>
+
+                            </div>
+
+
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2 ">Filtrer</button>
+                    </form>
+
+
+
+
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.title)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateCreation)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateReglage)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.status)
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.title)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateCreation)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateReglage)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @if (item.status == "En cours")
+                                        {
+
+                                            <span class="label label-xl label-inline label-light-success"> @Html.DisplayFor(modelItem => item.status) </span>
+                                        }
+                                        else
+                                        {
+
+                                            <span class="label label-xl label-inline label-light-primary"> @Html.DisplayFor(modelItem => item.status) </span>
+                                        }
+                                    </td>
+                                    @{
+                                        var attid = "";
+                                        if (item.Attribution != null)
+                                        {
+                                            attid = "exist";
+                                        }
+                                    }
+
+                                    <td>
+                                         <a href="" class="btn btn-outline-success" id="modalin" data-toggle="modal" data-target="#exampleModalLong"
+                                           data-id="@item.Id"
+                                           data-title="@item.title"
+                                           data-creator="@item.Creepar.Nom @item.Creepar.Prenom"
+                                           data-desc="@item.Description"
+                                           data-datec="@item.DateCreation"
+                                           data-dater="@item.DateReglage"
+                                           data-aff="@attid"
+                                            data-treat="@item.Modifiepar">  Detail </a>
+                           
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="exampleModalLong" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="incdesc">
+
+                </div>
+
+                <div id="forminc" class="w-100">
+                    <form action="@Url.Action("markAsTreated","Collab")" method="post">
+                        <input hidden="hidden" name="incid" value="" id="incid" />
+                        <textarea class="form-control" name="treatement" placeholder="Expliquer les détails de traitement.."></textarea>
+
+                        <input type="submit" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" value="traiter" />
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer  ">
+
+                <div id="formaff" class="w-100">
+
+                    <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).on("click", "#modalin", function () {
+        let datec = $(this).data("datec");
+        let title = $(this).data("title");
+        let creator = $(this).data("creator");
+        let desc = $(this).data('desc');
+        let dater = $(this).data('dater');
+        let cid = $(this).data("id");
+        let attrib = $(this).data("aff");
+        let trait = $(this).data("treat");
+        console.log(cid);
+        if (dater == "") {
+            dater = "--/--/--"
+        } else {
+            $("#forminc").hide()
+        }
+        document.getElementById("incid").value = cid;
+
+    //    document.getElementById("inpid").value = cid;
+
+
+
+        $('.modal-title').empty().append(title);
+        $('#incdesc').empty().append("<p><br>Name: </br>" + creator + "</p><br><p><br>Date création: </br>" + datec + "</p><br>" + "<p><br>Date réglage: </br>" +
+            dater + "</p><br><p><br>description: </br>" + desc + "</p><br><p><br>Traitement: </br>" + trait + "</p>");
+        
+
+    });</script>
+

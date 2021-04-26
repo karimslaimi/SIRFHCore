@@ -17,7 +17,7 @@
                 <div class="kt-grid__item kt-wizard-v2__aside">
 
 
-                    <form class="form-inline" method="post" action="@Url.Action("incidents","Collab")">
+                    <form class="form-inline" method="post" action="@Url.Action("mesIncident","Collab")">
                         <div>
                             <div><div><p><label>    </label></p></div></div>
                         </div>
@@ -32,22 +32,6 @@
 
                         </div>
 
-                        <div class="form-group mx-sm-3 mb-2">
-
-                            <div class="radio-inline">
-                                <label class="radio">
-                                    <input type="radio" checked="checked" name="mine" value="false">
-                                    <span></span>Tous
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="mine" value="true">
-                                    <span></span>Mes
-                                </label>
-
-                            </div>
-
-
-                        </div>
 
                         <button type="submit" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2 ">Filtrer</button>
                     </form>
@@ -81,43 +65,52 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.title)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DateCreation)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DateReglage)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td>
-                                    <span class="label label-xl label-inline label-light-success"> @Html.DisplayFor(modelItem => item.status) </span>
-                                </td>
-                                @{
-                                    var attid="";
-                                    if (item.Attribution != null)
-                                    {
-                                        attid = "exist";
-                                    }
-                                }
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.title)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateCreation)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateReglage)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @if (item.status == "En cours")
+                                        {
 
-                                <td>
-                                    @Html.ActionLink("Modifier", "editIncident", "Collab", new { id = item.Id }, new { @class = "btn btn-outline-primary" })  |
-                                    <a href="" class="btn btn-outline-success" id="modalin" data-toggle="modal" data-target="#exampleModalLong"
-                                       data-id="@item.Id"
-                                       data-title="@item.title"
-                                       data-creator="@item.Creepar.Nom @item.Creepar.Prenom"
-                                       data-desc="@item.Description"
-                                       data-datec="@item.DateCreation"
-                                       data-dater="@item.DateReglage"
-                                       data-aff="@attid">  Detail </a>
-                                    @Html.ActionLink("Supprimer", "deleteIncident", "Collab", new { id = item.Id }, new { @class = "btn btn-outline-danger" })
-                                </td>
-                            </tr>
+                                            <span class="label label-xl label-inline label-light-success"> @Html.DisplayFor(modelItem => item.status) </span>
+                                        }
+                                        else
+                                        {
+
+                                            <span class="label label-xl label-inline label-light-primary"> @Html.DisplayFor(modelItem => item.status) </span>
+                                        }
+                                    </td>
+                                    @{
+                                        var attid = "";
+                                        if (item.Attribution != null)
+                                        {
+                                            attid = "exist";
+                                        }
+                                    }
+
+                                    <td>
+                                        @Html.ActionLink("Modifier", "editIncident", "Collab", new { id = item.Id }, new { @class = "btn btn-outline-primary" })  |
+                                        <a href="" class="btn btn-outline-success" id="modalin" data-toggle="modal" data-target="#exampleModalLong"
+                                           data-id="@item.Id"
+                                           data-title="@item.title"
+                                           data-creator="@item.Creepar.Nom @item.Creepar.Prenom"
+                                           data-desc="@item.Description"
+                                           data-datec="@item.DateCreation"
+                                           data-dater="@item.DateReglage"
+                                           data-aff="@attid" data-treat="@item.Modifiepar">  Detail </a>
+                                        @Html.ActionLink("Supprimer", "deleteIncident", "Collab", new { id = item.Id }, new { @class = "btn btn-outline-danger" })
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -148,13 +141,13 @@
 
             </div>
             <div class="modal-footer  ">
-         
+
                 <div id="formaff" class="w-100">
 
                     <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
                 </div>
-               
-                 
+
+
             </div>
         </div>
     </div>
@@ -173,16 +166,17 @@
         let dater = $(this).data('dater');
         let cid = $(this).data("id");
         let attrib = $(this).data("aff");
+        let trait = $(this).data("treat");
         console.log(cid);
-       
 
-        document.getElementById("inpid").value = cid;
-      
+
+       // document.getElementById("inpid").value = cid;
+
 
 
         $('.modal-title').empty().append(title);
         $('.modal-body').empty().append("<p><br>Name: </br>" + creator + "</p><br><p><br>Date création: </br>" + datec + "</p><br>" + "<p><br>Date réglage: </br>" +
-            dater + "</p><br><p><br>description: </br>" + desc + "</p>");
-          
+            dater + "</p><br><p><br>description: </br>" + desc + "</p><br><p><br>Traitement: </br>" + trait + "</p>");
+
     });</script>
 

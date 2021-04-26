@@ -95,7 +95,16 @@
                                     @Html.DisplayFor(modelItem => item.Description)
                                 </td>
                                 <td>
-                                    <span class="label label-xl label-inline label-light-success"> @Html.DisplayFor(modelItem => item.status) </span>
+                                    @if(item.status=="En cours")
+                                    {
+
+                                        <span class="label label-xl label-inline label-light-success"> @Html.DisplayFor(modelItem => item.status) </span>
+                                    }
+                                    else
+                                    {
+
+                                        <span class="label label-xl label-inline label-light-primary"> @Html.DisplayFor(modelItem => item.status) </span>
+                                    }
                                 </td>
                                 @{
                                     var attid="";
@@ -114,7 +123,7 @@
                                        data-desc="@item.Description"
                                        data-datec="@item.DateCreation"
                                        data-dater="@item.DateReglage"
-                                       data-aff="@attid">  Detail </a>
+                                       data-aff="@attid" data-treat="@item.Modifiepar">  Detail </a>
                                     @Html.ActionLink("Supprimer", "deleteIncident", "Manager", new { id = item.Id }, new { @class = "btn btn-outline-danger" })
                                 </td>
                             </tr>
@@ -193,6 +202,7 @@
 
 <script>
     $(document).on("click", "#modalin", function () {
+        
         let datec = $(this).data("datec");
         let title = $(this).data("title");
         let creator = $(this).data("creator");
@@ -200,6 +210,8 @@
         let dater = $(this).data('dater');
         let cid = $(this).data("id");
         let attrib = $(this).data("aff");
+        let trait = "";
+        trait = $(this).data("treat");
         console.log(cid);
        
 
@@ -209,7 +221,7 @@
 
         $('.modal-title').empty().append(title);
         $('.modal-body').empty().append("<p><br>Name: </br>" + creator + "</p><br><p><br>Date création: </br>" + datec + "</p><br>" + "<p><br>Date réglage: </br>" +
-            dater + "</p><br><p><br>description: </br>" + desc + "</p>");
+            dater + "</p><br><p><br>description: </br>" + desc + "</p><br><p><br>Traitement: </br>" + trait + "</p>")
 
 
         if (attrib != "") {
