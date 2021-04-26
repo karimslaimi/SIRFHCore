@@ -256,13 +256,16 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             Projet projet = projetService.GetProjet(id);
             CollaborateurService collaborateurService = new CollaborateurService();
             ViewBag.collab = personneService.GetMany(x => x.Collaborations.Where(s=>s.Projet.id==id).Any());
+          
             var collabs = userManager.GetUsersInRoleAsync("Collaborateur").Result;
+           
             ViewBag.persons = collabs.Select(x =>
                    new SelectListItem { Value = x.UserName.ToString(), Text = x.UserName }
 
             ).ToList();
             TachesService tachesService = new TachesService();
-            ViewBag.taches = tachesService.GetMany(x => x.Projet.id == id).ToList();
+
+            ViewBag.taches = tachesService.GetTachesbyProjct(id).ToList();
 
             return View(projet);
         }

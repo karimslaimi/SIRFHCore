@@ -72,12 +72,12 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             string name = User.Identity.Name;
             if (string.IsNullOrEmpty(search))
             {
-                _projects = projetService.GetMany(x=>x.createur.UserName==name).ToList();
+                _projects = projetService.GetMany(x=> x.collaborateurs.Where(s => s.Personne.UserName == name).Any()).ToList();
 
             }
             else
             {
-                _projects = projetService.GetMany(x =>x.createur.UserName==name&& (x.nom.Contains(search) || x.description.Contains(search))).ToList();
+                _projects = projetService.GetMany(x =>x.collaborateurs.Where(s=>s.Personne.UserName==name).Any() && (x.nom.Contains(search) || x.description.Contains(search))).ToList();
             }
 
             return View(_projects);

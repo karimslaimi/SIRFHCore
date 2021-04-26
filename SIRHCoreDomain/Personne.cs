@@ -28,6 +28,9 @@ namespace SIRHCoreDomain
         public string DateDeNais { get; set; }
         public string Grade { get; set; }
         public string Fonction { get; set; }
+
+
+
         public virtual Solde Solde { get; set; }
         public virtual List<Conge> Conge { get; set; }
         public virtual List<Projet> Projets { get; set; }
