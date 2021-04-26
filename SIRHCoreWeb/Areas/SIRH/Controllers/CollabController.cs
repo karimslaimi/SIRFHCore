@@ -21,12 +21,14 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             personneService = new PersonneService();
             projetService = new ProjetService();
             tachesService = new TachesService();
+            incidentService = new IncidentService();
         }
 
         private readonly UserManager<IdentityUser> userManager;
         IProjetService projetService = null;
         IPersonneService personneService = null;
         ITachesService tachesService = null;
+        IIncidentService incidentService = null;
 
 
         private DB_SIRHContext db = new DB_SIRHContext();
@@ -162,7 +164,116 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
 
 
+
+        /********************************/
+
+
+
+
+
+
+
+
+        [HttpGet]
+        public ActionResult addIncident()
+        {
+            Incident incident = new Incident();
+            return View(incident);
+        }
+
+
+        [HttpPost]
+        public ActionResult addIncident(Incident incident)
+        {
+            if (ModelState.IsValid)
+            {
+                incident.DateCreation = DateTime.Now;
+                incident.status = "En cours";
+                string name = User.Identity.Name;
+                Personne personne = personneService.Get(x => x.UserName == name);
+                if (personne.Incidents == null)
+                {
+                    personne.Incidents = new List<Incident>();
+                }
+                personne.Incidents.Add(incident);
+                personneService.Update(personne);
+                return RedirectToAction("incidents");
+
+            }
+            else
+            {
+                return View(incident);
+            }
+        }
+
+
+        public ActionResult mesIncident( string search)
+        {
+            
+            List<Incident> incidents = null;
+            
          
+                string name = User.Identity.Name;
+                incidents = incidentService.GetUserIncident(name).ToList();
+
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    incidents = incidents.Where(x => x.Description.Contains(search) || x.status.Contains(search) || x.title.Contains(search)).ToList();
+                }
+         
+ 
+                 
+
+            return View(incidents);
+        }
+
+
+        public ActionResult deleteIncident(int id)
+        {
+            incidentService.Delete(x => x.Id == id);
+            return RedirectToAction("incidents");
+        }
+
+
+        [HttpGet]
+        public ActionResult editIncident(int id)
+        {
+            Incident incident = incidentService.Get(x => x.Id == id);
+            return View(incident);
+
+        }
+
+        public ActionResult editIncident(Incident incident)
+        {
+            if (ModelState.IsValid)
+            {
+
+                incidentService.Update(incident);
+
+                return RedirectToAction("incidents");
+
+            }
+            else
+            {
+                return View(incident);
+            }
+        }
+
+        //i have to test these methods and add mark as treated
+
+
+        public ActionResult markAsTreated(int incid)
+        {
+            Incident incident1 = incidentService.Get(i => i.Id == incid);
+            incident1.DateReglage = DateTime.Now;
+            incident1.status = "Traité";
+            incidentService.Update(incident1);
+
+            return RedirectToAction("Incidents");
+        }
+
+
+
 
 
 

@@ -1,9 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using Microsoft.AspNetCore.Mvc;
-using SIRHCoreData.Infrastructure;
+﻿using SIRHCoreData.Infrastructure;
+using SIRHCoreData.Repositories;
 using SIRHCoreDomain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SIRHCoreService
 {
@@ -12,7 +17,7 @@ namespace SIRHCoreService
 
         DatabaseFactory dbFactory = null;
         IUnitOfWork utOfWork = null;
-        
+
         public IncidentService()
         {
             dbFactory = new DatabaseFactory();
@@ -20,8 +25,8 @@ namespace SIRHCoreService
         }
         public IEnumerable<Incident> GetIncident()
         {
-            var Incident = utOfWork.IncidentRepository.GetAll();
-            return Incident;
+            return dbFactory.DataContext.Incidents.Include(x => x.Creepar).Include(s => s.Attribution);
+
         }
 
 
@@ -41,13 +46,13 @@ namespace SIRHCoreService
                 utOfWork.IncidentRepository.Update(i);
                 utOfWork.Commit();
             }
-            }
+        }
         public void DeleteIncident(Incident i)
         {
             utOfWork.IncidentRepository.Delete(i);
             utOfWork.Commit();
         }
-        public void traiterIncident([Bind ("Id")]Incident i)
+        public void traiterIncident([Bind("Id")] Incident i)
         {
             utOfWork.IncidentRepository.Update(i);
             utOfWork.Commit();
@@ -58,9 +63,22 @@ namespace SIRHCoreService
         //    utOfWork.Commit();
         //}
         public Incident GetIncident(int Id)
-        { var Incident = utOfWork.IncidentRepository.GetById(Id);
-                return Incident;
+        {
+
+            return dbFactory.DataContext.Incidents.Where(s => s.Id == Id).Include(x => x.Creepar).Include(s => s.Attribution).FirstOrDefault();
+
         }
+
+
+        public IEnumerable<Incident> GetUserIncident(string username)
+        {
+            return dbFactory.DataContext.Incidents.Where(s => s.Creepar.UserName == username).Include(x => x.Creepar).Include(s => s.Attribution);
+        }
+
+
+
+
+
         //public Incident GetIncidentByDateCreation (DateTime datecreation)
         //{ var Incident = utOfWork.IncidentRepository.GetByDateCreation(datecreation); 
         //    return (Incident)Incident;
@@ -105,12 +123,12 @@ namespace SIRHCoreService
 
         public Incident GetById(long Id)
         {
-           return utOfWork.IncidentRepository.Get(w => w.Id == Id);
+            return utOfWork.IncidentRepository.Get(w => w.Id == Id);
         }
 
         public Incident GetById(string Id)
         {
-            return utOfWork.IncidentRepository.Get(w => w.Id.ToString()== Id);
+            return utOfWork.IncidentRepository.Get(w => w.Id.ToString() == Id);
         }
 
         public Incident Get(Expression<Func<Incident, bool>> where)
@@ -125,7 +143,7 @@ namespace SIRHCoreService
 
         public IEnumerable<Incident> GetAlll(string user)
         {
-            return utOfWork.IncidentRepository.GetMany(x=>x.Creepar.UserName==user);
+            return utOfWork.IncidentRepository.GetMany(x => x.Creepar.UserName == user);
         }
 
         public IEnumerable<Incident> GetMany(Expression<Func<Incident, bool>> where)
@@ -137,5 +155,7 @@ namespace SIRHCoreService
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

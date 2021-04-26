@@ -17,7 +17,7 @@
                 <div class="kt-grid__item kt-wizard-v2__aside">
 
 
-                    <form class="form-inline" method="post" action="@Url.Action("incidents","Manager")">
+                    <form class="form-inline" method="post" action="@Url.Action("incidents","Collab")">
                         <div>
                             <div><div><p><label>    </label></p></div></div>
                         </div>
@@ -106,7 +106,7 @@
                                 }
 
                                 <td>
-                                    @Html.ActionLink("Modifier", "editIncident", "Manager", new { id = item.Id }, new { @class = "btn btn-outline-primary" })  |
+                                    @Html.ActionLink("Modifier", "editIncident", "Collab", new { id = item.Id }, new { @class = "btn btn-outline-primary" })  |
                                     <a href="" class="btn btn-outline-success" id="modalin" data-toggle="modal" data-target="#exampleModalLong"
                                        data-id="@item.Id"
                                        data-title="@item.title"
@@ -115,7 +115,7 @@
                                        data-datec="@item.DateCreation"
                                        data-dater="@item.DateReglage"
                                        data-aff="@attid">  Detail </a>
-                                    @Html.ActionLink("Supprimer", "deleteIncident", "Manager", new { id = item.Id }, new { @class = "btn btn-outline-danger" })
+                                    @Html.ActionLink("Supprimer", "deleteIncident", "Collab", new { id = item.Id }, new { @class = "btn btn-outline-danger" })
                                 </td>
                             </tr>
                             }
@@ -151,34 +151,7 @@
          
                 <div id="formaff" class="w-100">
 
-
-                    @using (Html.BeginForm("affectIncident", "Manager", "SIRH"))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true)
-
-                        <input  name="incid" value="" id="inpid" hidden="hidden" />
-
-                        <div class="row">
-
-
-                            <div class="col-lg-4 col-md-9 col-sm-12 float-left">
-                                @Html.DropDownList("username", ViewBag.collabs, "Select ...", new { @class = "form-control selectpicker", style = "width: 100px;" })
-                            </div>
-
-
-
-                            <div class="col-md-4 form-group">
-                                <input type="submit" class="btn btn-success btn-md  btn-wide kt-font-bold kt-font-transform-u mb-2" value="Affecter" />
-
-                            </div>
-                            <div class="col-md-4  form-group">
-                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-
-                            </div>
-
-                        </div>
-                    }
+                    <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
                 </div>
                
                  
@@ -210,12 +183,6 @@
         $('.modal-title').empty().append(title);
         $('.modal-body').empty().append("<p><br>Name: </br>" + creator + "</p><br><p><br>Date création: </br>" + datec + "</p><br>" + "<p><br>Date réglage: </br>" +
             dater + "</p><br><p><br>description: </br>" + desc + "</p>");
-
-
-        if (attrib != "") {
-            $("#formaff").hide();
-
-            $(".modal-footer").empty().append('  <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>');
-        }  
+          
     });</script>
 

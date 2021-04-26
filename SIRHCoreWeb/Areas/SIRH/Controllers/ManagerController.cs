@@ -385,7 +385,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             if (mine == true)
             {
                 string name = User.Identity.Name;
-                incidents = incidentService.GetMany(x => x.Creepar.UserName == name).ToList();
+                incidents = incidentService.GetUserIncident(name).ToList();
                 if (!string.IsNullOrWhiteSpace(search))
                 {
                     incidents = incidents.Where(x => x.Description.Contains(search) || x.status.Contains(search) || x.title.Contains(search)).ToList();
@@ -393,13 +393,19 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             }
             else
             {
-                incidents = incidentService.GetAll().ToList();
+                incidents = incidentService.GetIncident().ToList();
                
                 if (!string.IsNullOrWhiteSpace(search))
                 {
                     incidents = incidents.Where(x => x.Description.Contains(search) || x.status.Contains(search) || x.title.Contains(search)).ToList();
                 }
             }
+
+            var collabs = userManager.GetUsersInRoleAsync("Collaborateur").Result;
+            ViewBag.collabs = collabs.Select(x =>
+                   new SelectListItem { Value = x.UserName.ToString(), Text = x.UserName }
+
+            ).ToList();
 
             return View(incidents);
         }
@@ -439,10 +445,10 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
         //i need to add a modal in list page, where he can affect collabs and then add the remaining work to the collab
 
 
-        public ActionResult affectIncident(int id,int userid)
+        public ActionResult affectIncident(int incid, string username)
         {
-            Incident incident1 = incidentService.Get(i => i.Id == id);
-           Personne personne= personneService.Get(x => x.Id == userid+"");
+            Incident incident1 = incidentService.Get(i => i.Id == incid);
+            Personne personne = personneService.Get(x => x.UserName == username);
             if (personne.traitements == null)
             {
                 personne.traitements = new List<Incident>();
