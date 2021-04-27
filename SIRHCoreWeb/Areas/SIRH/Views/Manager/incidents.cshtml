@@ -107,10 +107,15 @@
                                     }
                                 </td>
                                 @{
-                                    var attid="";
+                                    var attid="notexit";
                                     if (item.Attribution != null)
                                     {
                                         attid = "exist";
+                                    }
+                                    var trait = "";
+                                    if (item.Modifiepar != null)
+                                    {
+                                        trait = item.Modifiepar;
                                     }
                                 }
 
@@ -123,7 +128,7 @@
                                        data-desc="@item.Description"
                                        data-datec="@item.DateCreation"
                                        data-dater="@item.DateReglage"
-                                       data-aff="@attid" data-treat="@item.Modifiepar">  Detail </a>
+                                       data-aff="@attid" data-treat="@trait">  Detail </a>
                                     @Html.ActionLink("Supprimer", "deleteIncident", "Manager", new { id = item.Id }, new { @class = "btn btn-outline-danger" })
                                 </td>
                             </tr>
@@ -190,7 +195,9 @@
                     }
                 </div>
                
-                 
+                <div id="closebtn">
+                    <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -209,25 +216,50 @@
         let desc = $(this).data('desc');
         let dater = $(this).data('dater');
         let cid = $(this).data("id");
-        let attrib = $(this).data("aff");
-        let trait = "";
-        trait = $(this).data("treat");
-        console.log(cid);
+        let attrib = "";
+        attrib = $(this).data("aff");
+
+     
+
+
+
+        $("#inpid").val(cid);
+
+        let form = ("#formaff");
+
+
+        let trait = null;
+
+        if ($(this).data("treat")) {
+           
+            trait = $(this).data("treat");
+        } else {
+            
+            trait = "";
+        }
+       
        
 
-        document.getElementById("inpid").value = cid;
+      
       
 
 
         $('.modal-title').empty().append(title);
         $('.modal-body').empty().append("<p><br>Name: </br>" + creator + "</p><br><p><br>Date création: </br>" + datec + "</p><br>" + "<p><br>Date réglage: </br>" +
-            dater + "</p><br><p><br>description: </br>" + desc + "</p><br><p><br>Traitement: </br>" + trait + "</p>")
+            dater + "</p><br><p><br>description: </br>" + desc + "</p><br><p><br>Traitement:");
+        if (trait != null) {
+            $('.modal-body').append("</br > " + trait + "</p > ");
+        }
+      
 
-
-        if (attrib != "") {
+        if (attrib == "exist") {
             $("#formaff").hide();
 
-            $(".modal-footer").empty().append('  <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>');
+            $("#closebtn").show();
+        } else {
+            $("#formaff").show();
+
+            $("#closebtn").hide();
         }  
     });</script>
 

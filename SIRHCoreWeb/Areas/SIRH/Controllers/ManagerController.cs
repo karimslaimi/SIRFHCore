@@ -254,7 +254,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             }
             else
             {
-                return RedirectToAction("DetrailProject", new { id = projid });
+                return RedirectToAction("DetailProject", new { id = projid });
             }
 
         }
@@ -293,11 +293,14 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
         public ActionResult addTask(Taches taches,int projid)
         {
+            //remove it so that the modelstate will be valid
             ModelState.Remove("creator");
             ModelState.Remove("Projet");
             if (ModelState.IsValid)
             {
+                //get the authenticated user username
                 string name = User.Identity.Name;
+                //get the project and assign it to the task we are going to create
                 taches.Projet = projetService.Get(x => x.id == projid);
                 Personne personne= personneService.Get(x => x.UserName == name);
 
@@ -305,15 +308,17 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
                  
              
                 taches.date = DateTime.Now;
-                taches.state = "pending";
+                taches.state = "En cours";
 
 
-
+                //the personne won't allow us to create the task without passing by the personne
+                //we get the personne we add a task to him w update the personne that way task will be saved
                 if (personne.Taches == null)
                 {
                     personne.Taches = new List<Taches>();
 
                 }
+                //we add a task to a user and the upadte the user
                 personne.Taches.Add(taches);
                 personneService.Update(personne);
 
@@ -333,8 +338,9 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
         public ActionResult finishTask(int id)
         {
+            //update the task and make it closed
             Taches taches = tachesService.GetTaches(id);
-            taches.state = "finished";
+            taches.state = "Terminé";
             tachesService.Update(taches);
             return RedirectToAction("DetailProject", new { id = taches.Projet.id });
         }
@@ -343,8 +349,6 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
 
 
-        //manager add/remove/edit an incident
-        //affect a collab to fix an incident
 
         [HttpGet]
         public ActionResult addIncident()
@@ -361,12 +365,15 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             {
                 incident.DateCreation = DateTime.Now;
                 incident.status = "En cours";
+                //get the authenticated user and assign an incident to him
+                //identity won't allow us to add an entity without passing by it
                 string name = User.Identity.Name;
                 Personne personne = personneService.Get(x => x.UserName == name);
                 if (personne.Incidents == null)
                 {
                     personne.Incidents = new List<Incident>();
                 }
+                //add the incident to the list of user's incident and update the user
                 personne.Incidents.Add(incident);
                 personneService.Update(personne);
                 return RedirectToAction("incidents");
@@ -381,6 +388,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
         public ActionResult incidents(bool mine,string search)
         {
+            //incidents list with and without filter
             List<Incident> incidents = null;
             if (mine == true)
             {
@@ -401,7 +409,9 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
                 }
             }
 
+            //the manager will have the collaborators list and can assign an incident to a collab
             var collabs = userManager.GetUsersInRoleAsync("Collaborateur").Result;
+            //creating a dropdown list 
             ViewBag.collabs = collabs.Select(x =>
                    new SelectListItem { Value = x.UserName.ToString(), Text = x.UserName }
 
@@ -442,7 +452,6 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
             }
         }
 
-        //i need to add a modal in list page, where he can affect collabs and then add the remaining work to the collab
 
 
         public ActionResult affectIncident(int incid, string username)

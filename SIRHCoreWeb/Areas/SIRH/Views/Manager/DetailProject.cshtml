@@ -384,7 +384,7 @@
         $('.modal-title').empty().append(title);
         $('.modal-body').empty().append("<p><br>Name: </br>" + creator + "</p><br><p><br>state: </br>" + state + "</p><br>" + "<p><br>Date: </br>" +
             date + "</p><br><p><br>description: </br>" + desc + "</p>");
-        if (state == "pending") {
+        if (state == "En cours") {
             $("#markit").attr("href", function (i, href) {
                 var index = href.indexOf("?");
                 return (index == -1 ? href : href.substring(0, index)) + "?id="+id;
