@@ -128,7 +128,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
 
 
                 taches.date = DateTime.Now;
-                taches.state = "pending";
+                taches.state = "En cours";
 
 
 
@@ -157,7 +157,7 @@ namespace SIRHCoreWeb.Areas.SIRH.Controllers
         public ActionResult finishTask(int id)
         {
             Taches taches = tachesService.GetTaches(id);
-            taches.state = "finished";
+            taches.state = "Terminé";
             tachesService.Update(taches);
             return RedirectToAction("DetailProject", new { id = taches.Projet.id });
         }
